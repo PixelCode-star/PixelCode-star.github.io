@@ -3,7 +3,6 @@
   width: 50%;
   border: 1px Solid gray;
   background-color:white;
-  border-radius: 10px 10px 10px 10px;
   padding: 5px;
   justify-content: space-evenly
 }
@@ -12,11 +11,14 @@
   width:50%;
   border: 1px Solid gray;
   background-color:white;
-  border-radius: 10px 10px 10px 10px;
   padding: 5px;
-  justify-content: space-evenly
+  justify-content: space-evenly;
 }
 
+
+#header{
+	text-align: center;
+}
 
 .header {
   padding: 60px;
