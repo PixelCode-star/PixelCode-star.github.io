@@ -7,14 +7,14 @@
   justify-content: space-evenly
 }
 #Choose-Interests{
-  margin : auto;
-  width:50%;
-  border: 1px Solid gray;
+  
   background-color:white;
-  padding: 5px;
-  justify-content: space-evenly;
+
 }
 
+#herder{
+	text-align: center;
+}
 
 #header{
 	text-align: center;

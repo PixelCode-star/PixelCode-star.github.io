@@ -169,4 +169,14 @@
 
 }
 
+#Header{
+	text-align:center;
+	background-color:#1abc9c;
+}
+
+#CSU{
+	text-align:center;
+	background-color#1abc9c;
+}
+
 body {background-color: coral;}
