@@ -12,18 +12,47 @@
 </script>
   <link rel="stylesheet" type="text/css" href="F2.css">
   <script src="ChatBot.js"></script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
    <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+#div1 {
+  font-size:48px;
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+
+<div id="div1" class="fa"></div>
+
+<script>
+function hand() {
+  var a;
+  a = document.getElementById("div1");
+  a.innerHTML = "&#xf25a;";
+  setTimeout(function () {
+      a.innerHTML = "&#xf256;";
+    }, 500);
+  setTimeout(function () {
+      a.innerHTML = "&#xf259;";
+    }, 1000);
+  setTimeout(function () {
+      a.innerHTML = "&#xf256;";
+    }, 1500);
+}
+hand();
+setInterval(hand, 2000);
+</script>
+
 </head>
 
 <title style="font-family:'Comic Sans MS'" >SneakPeak</title>
 
-
+<div id="charging" class="fa"></div>
 <body>
 
   <div id="page-wrap1">
@@ -69,8 +98,8 @@
 
 
    
-              
-              <img id ="Hearts" src="download.png" style="max-width:100%;height:auto;">
+                
+              <img id ="Hearts" src="brain.jpeg" style="max-width:100%;height:auto;">
 
 			  <form action>
 			     <input class ="button" style="font-family:Comic Sans MS"  type ="button"name = "push-button" value="Next" id = "Submit">
@@ -79,27 +108,14 @@
  </div>
  
  <p>
+</div>
  <br>
  <br>
  </p>
  <p>
-    
+  
  </p>
-<div class="split left">
-  <div class="centered">
-    <img src="capture.jpeg" alt="Avatar woman">
-    <h2>Amber</h2>
-    <p>Join our community.</p>
-  </div>
-</div>
 
-<div class="split right">
-  <div class="centered">
-    <img src="Jaqu.jpeg" alt="Avatar man">
-    <h2>Jaqculine</h2>
-    <p>Join us now.</p>
-  </div>
-</div>
 
 
 </body>
