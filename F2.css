@@ -193,6 +193,7 @@ body {background-color: coral;}
   max-width: 300px;
   padding: 10px;
   background-color: white;
+  text-align:center-right
 }
 
 /* Full-width textarea */
@@ -204,12 +205,14 @@ body {background-color: coral;}
   background: #f1f1f1;
   resize: none;
   min-height: 200px;
+  text-align:center-right
 }
 
 /* When the textarea gets focus, do something */
 .form-container textarea:focus {
   background-color: #ddd;
   outline: none;
+  text-align:center-right
 }
 
 /* Set a style for the submit/login button */
@@ -222,6 +225,7 @@ body {background-color: coral;}
   width: 100%;
   margin-bottom:10px;
   opacity: 0.8;
+  text-align:center-right
 }
 
 /* Add a red background color to the cancel button */
