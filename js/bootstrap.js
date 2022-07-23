@@ -796,37 +796,37 @@
       };
 
       _proto._addTouchEventListeners = function _addTouchEventListeners() {
-        var _this3 = this;
+        var _this333333333 = this;
 
         if (!this._touchSupported) {
           return;
         }
 
         var start = function start(event) {
-          if (_this3._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
-            _this3.touchStartX = event.originalEvent.clientX;
-          } else if (!_this3._pointerEvent) {
-            _this3.touchStartX = event.originalEvent.touches[0].clientX;
+          if (_this333333333._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
+            _this333333333.touchStartX = event.originalEvent.clientX;
+          } else if (!_this333333333._pointerEvent) {
+            _this333333333.touchStartX = event.originalEvent.touches[0].clientX;
           }
         };
 
         var move = function move(event) {
           // ensure swiping with one touch and not pinching
           if (event.originalEvent.touches && event.originalEvent.touches.length > 1) {
-            _this3.touchDeltaX = 0;
+            _this333333333.touchDeltaX = 0;
           } else {
-            _this3.touchDeltaX = event.originalEvent.touches[0].clientX - _this3.touchStartX;
+            _this333333333.touchDeltaX = event.originalEvent.touches[0].clientX - _this333333333.touchStartX;
           }
         };
 
         var end = function end(event) {
-          if (_this3._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
-            _this3.touchDeltaX = event.originalEvent.clientX - _this3.touchStartX;
+          if (_this333333333._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
+            _this333333333.touchDeltaX = event.originalEvent.clientX - _this333333333.touchStartX;
           }
 
-          _this3._handleSwipe();
+          _this333333333._handleSwipe();
 
-          if (_this3._config.pause === 'hover') {
+          if (_this333333333._config.pause === 'hover') {
             // If it's a touch-enabled device, mouseenter/leave are fired as
             // part of the mouse compatibility events on first tap - the carousel
             // would stop cycling until user tapped out of it;
@@ -834,15 +834,15 @@
             // (as if it's the second time we tap on it, mouseenter compat event
             // is NOT fired) and after a timeout (to allow for mouse compatibility
             // events to fire) we explicitly restart cycling
-            _this3.pause();
+            _this333333333.pause();
 
-            if (_this3.touchTimeout) {
-              clearTimeout(_this3.touchTimeout);
+            if (_this333333333.touchTimeout) {
+              clearTimeout(_this333333333.touchTimeout);
             }
 
-            _this3.touchTimeout = setTimeout(function (event) {
-              return _this3.cycle(event);
-            }, TOUCHEVENT_COMPAT_WAIT + _this3._config.interval);
+            _this333333333.touchTimeout = setTimeout(function (event) {
+              return _this333333333.cycle(event);
+            }, TOUCHEVENT_COMPAT_WAIT + _this333333333._config.interval);
           }
         };
 
@@ -1389,7 +1389,7 @@
       };
 
       _proto._getParent = function _getParent() {
-        var _this3 = this;
+        var _this333333333 = this;
 
         var parent;
 
@@ -1406,7 +1406,7 @@
         var selector = "[data-toggle=\"collapse\"][data-parent=\"" + this._config.parent + "\"]";
         var children = [].slice.call(parent.querySelectorAll(selector));
         $(children).each(function (i, element) {
-          _this3._addAriaAndCollapsedClass(Collapse._getTargetFromElement(element), [element]);
+          _this333333333._addAriaAndCollapsedClass(Collapse._getTargetFromElement(element), [element]);
         });
         return parent;
       };
@@ -2241,7 +2241,7 @@
       };
 
       _proto._showElement = function _showElement(relatedTarget) {
-        var _this3 = this;
+        var _this333333333 = this;
 
         var transition = $(this._element).hasClass(ClassName$5.FADE);
 
@@ -2277,12 +2277,12 @@
         });
 
         var transitionComplete = function transitionComplete() {
-          if (_this3._config.focus) {
-            _this3._element.focus();
+          if (_this333333333._config.focus) {
+            _this333333333._element.focus();
           }
 
-          _this3._isTransitioning = false;
-          $(_this3._element).trigger(shownEvent);
+          _this333333333._isTransitioning = false;
+          $(_this333333333._element).trigger(shownEvent);
         };
 
         if (transition) {
@@ -2567,7 +2567,7 @@
 
 
   $(document).on(Event$5.CLICK_DATA_API, Selector$5.DATA_TOGGLE, function (event) {
-    var _this10 = this;
+    var _this110 = this;
 
     var target;
     var selector = Util.getSelectorFromElement(this);
@@ -2589,8 +2589,8 @@
       }
 
       $target.one(Event$5.HIDDEN, function () {
-        if ($(_this10).is(':visible')) {
-          _this10.focus();
+        if ($(_this110).is(':visible')) {
+          _this110.focus();
         }
       });
     });
@@ -3141,13 +3141,13 @@
         ;
 
       _proto._getOffset = function _getOffset() {
-        var _this3 = this;
+        var _this333333333 = this;
 
         var offset = {};
 
         if (typeof this.config.offset === 'function') {
           offset.fn = function (data) {
-            data.offsets = _objectSpread({}, data.offsets, _this3.config.offset(data.offsets, _this3.element) || {});
+            data.offsets = _objectSpread({}, data.offsets, _this333333333.config.offset(data.offsets, _this333333333.element) || {});
             return data;
           };
         } else {
@@ -4313,10 +4313,10 @@
       };
 
       _proto._setListeners = function _setListeners() {
-        var _this3 = this;
+        var _this333333333 = this;
 
         $(this._element).on(Event$a.CLICK_DISMISS, Selector$a.DATA_DISMISS, function () {
-          return _this3.hide(true);
+          return _this333333333.hide(true);
         });
       };
 
