@@ -12,25 +12,46 @@
    DESIGN SYSTEM
    ══════════════════════════════════════ */
 :root{
-  --navy:#0a1628;--navy2:#14253d;--navy3:#1e3554;--navy4:#2a4a6e;
-  --cream:#f8f4ec;--cream2:#f0ebe0;--cream3:#e4ddd0;--cream4:#d4ccbc;
-  --gold:#c8973a;--gold2:#e8b655;--gold3:#f0cc78;--gold-glow:rgba(200,151,58,0.15);
+  --navy:#0f2b1e;--navy2:#163d2a;--navy3:#1e5038;--navy4:#2a6a4a;
+  --cream:#f5f2eb;--cream2:#ede8df;--cream3:#e0dbd0;--cream4:#d0c9bc;
+  --gold:#b8860b;--gold2:#d4a017;--gold3:#e8c547;--gold-glow:rgba(184,134,11,0.12);
   --teal:#1a7a6a;--teal2:#28a090;--teal3:#3cc0b0;
-  --coral:#b84030;--coral2:#d85848;--coral3:#f07868;
-  --sage:#3a7a4a;--sage2:#58a868;--sage3:#78c888;
+  --coral:#c0392b;--coral2:#e74c3c;--coral3:#f07868;
+  --sage:#2d8659;--sage2:#3da86a;--sage3:#5cc87a;
   --purple:#5a2d80;--purple2:#7a4daa;--purple3:#9a70c8;
   --rose:#c04878;--rose2:#e06898;
-  --text:#18120a;--text2:#3a3028;--text3:#6a5a44;--text4:#9a8a70;
-  --border:#c8b898;--border-light:#ddd4c0;
+  --emerald:#1a6b54;--emerald2:#22896c;--emerald3:#2ba784;
+  --text:#1a1a18;--text2:#2e2e28;--text3:#5a5a4e;--text4:#8a8a78;
+  --border:#c8c4b0;--border-light:#ddd8c8;
   --radius:10px;--radius-lg:14px;
-  --shadow-sm:0 2px 8px rgba(10,22,40,0.06);
-  --shadow-md:0 4px 20px rgba(10,22,40,0.08);
-  --shadow-lg:0 8px 40px rgba(10,22,40,0.12);
+  --shadow-sm:0 2px 8px rgba(15,43,30,0.06);
+  --shadow-md:0 4px 20px rgba(15,43,30,0.08);
+  --shadow-lg:0 8px 40px rgba(15,43,30,0.12);
   --transition:all 0.25s cubic-bezier(0.4,0,0.2,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--text);min-height:100vh;font-size:15.5px;line-height:1.78;display:flex}
+
+/* Floating particles canvas */
+#particles-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.4}
+#main{position:relative;z-index:1}
+#sidebar{z-index:100}
+
+/* Card entrance animations */
+.card,.mcq-item,.img-wrap,.table-wrap,.mnemonic,.exam-box{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.card.visible,.mcq-item.visible,.img-wrap.visible,.table-wrap.visible,.mnemonic.visible,.exam-box.visible{opacity:1;transform:translateY(0)}
+
+/* Pulse glow on hover for cards */
+.card:hover{box-shadow:0 4px 24px rgba(26,107,84,0.12);transform:translateY(-3px)}
+.landing-card:hover{box-shadow:0 8px 32px rgba(26,107,84,0.15)}
+
+/* Floating animation for hero brain */
+@keyframes floatBrain{0%,100%{transform:translateY(-50%) translateX(0)}50%{transform:translateY(-53%) translateX(4px)}}
+.hero-brain{animation:floatBrain 4s ease-in-out infinite}
+
+/* Progress bar */
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--emerald),var(--sage2),var(--gold2));z-index:9999;transition:width 0.3s ease;width:0}
 
 /* ══════════════════════════════════════
    SIDEBAR
@@ -236,6 +257,8 @@ tr:nth-child(even) td{background:var(--cream)}
 </style>
 </head>
 <body>
+<div id="progress-bar"></div>
+<canvas id="particles-canvas"></canvas>
 
 <nav id="sidebar">
   <div id="sidebar-header">
@@ -1207,33 +1230,132 @@ tr:nth-child(even) td{background:var(--cream)}
 <div class="section" id="s13">
   <div class="section-badge">Module 13</div>
   <div class="section-title">Nervous Tissue Histology</div>
-  <div class="section-subtitle">Neurons, glia, and the cytoarchitecture of the CNS</div>
+  <div class="section-subtitle">A step-by-step guide: Neuron structure → Neuron types → Glial cells → Regional cytoarchitecture</div>
 
-  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">Microscopically, nervous tissue consists of two principal cell types: <strong>neurons</strong> (the excitable cells that transmit signals) and <strong>neuroglia</strong> (the supporting cells). A multipolar neuron features a cell body (soma) containing a large, pale-staining nucleus with a prominent nucleolus, surrounded by granular basophilic <strong>Nissl bodies</strong> (rough endoplasmic reticulum). The supporting cast of glia is equally crucial: <strong>astrocytes</strong> form the blood-brain barrier, <strong>oligodendrocytes</strong> myelinate CNS axons, <strong>microglia</strong> are the resident macrophages, and <strong>ependymal cells</strong> line the ventricles to secrete CSF.</p>
+  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">This section covers what nervous tissue looks like <em>under the microscope</em>. We'll build up systematically: first understand the <strong>neuron</strong> (the functional unit), then learn how neurons are <strong>classified</strong>, then study the <strong>glial (supporting) cells</strong>, and finally look at how these cells are arranged in specific regions — the <strong>cerebral cortex</strong>, <strong>cerebellum</strong>, and <strong>spinal cord</strong>.</p>
 
-  <h2>The Spinal Cord Histology (Rexed Laminae)</h2>
+  <div class="img-wrap">
+    <div class="img-title">Nervous Tissue Cell Types</div>
+    <img src="img_nervous_tissue.png" alt="Diagram showing neuron structure, astrocyte, oligodendrocyte, microglia, ependymal cells, and Schwann cell">
+    <div class="img-caption">Figure 13.1 — The major cell types of nervous tissue. Neurons transmit signals; glial cells support, protect, and maintain the neural environment.</div>
+  </div>
+
+  <h2>Step 1: The Neuron — Structure</h2>
   <div class="card-row">
-    <div class="card neuro full">
-      <div class="card-label">Grey Matter Cytoarchitecture</div>
+    <div class="card histo full">
+      <div class="card-label">Parts of a Typical Neuron</div>
       <ul>
-        <li><strong>Appearance:</strong> The spinal cord has an H-shaped central <strong>grey matter</strong> surrounded by peripheral <strong>white matter</strong>.</li>
-        <li><strong>Rexed Laminae:</strong> The grey matter is divided into 10 distinct layers (laminae I-X) described by Bror Rexed.</li>
-        <li><strong>Sensory vs Motor:</strong> Laminae I-VI (dorsal horn = sensory) receive afferent signals. Laminae VIII-IX (ventral horn = motor) contain huge multipolar alpha motor neurons. Lamina X surrounds the central canal.</li>
-        <li><strong>Substantia Gelatinosa (Lamina II):</strong> A specialized, pale-staining region in the dorsal horn heavily involved in <em>pain modulation</em> ("Gate Control Theory" of Melzack and Wall).</li>
+        <li><strong>Cell Body (Soma / Perikaryon):</strong> Contains the nucleus (large, pale, with a prominent nucleolus) and most organelles. Under the microscope you'll see granular basophilic clumps called <strong>Nissl bodies</strong> = rough endoplasmic reticulum (for protein synthesis).</li>
+        <li><strong>Dendrites:</strong> Short, branching processes that <em>receive</em> signals from other neurons. They contain Nissl bodies.</li>
+        <li><strong>Axon:</strong> Single, long process that <em>transmits</em> signals away from the cell body. Begins at the <strong>axon hillock</strong> (trigger zone). Does <em>NOT</em> contain Nissl bodies — this is how you distinguish it from dendrites on slides.</li>
+        <li><strong>Myelin Sheath:</strong> Fatty insulating layer around axons that speeds up conduction. Made by <em>oligodendrocytes</em> (CNS) or <em>Schwann cells</em> (PNS).</li>
+        <li><strong>Nodes of Ranvier:</strong> Gaps between myelin segments where action potentials "jump" (saltatory conduction).</li>
+        <li><strong>Synaptic Terminal:</strong> End of the axon where neurotransmitters are released.</li>
       </ul>
     </div>
   </div>
 
-  <h2>Cerebellar Cytoarchitecture</h2>
+  <h2>Step 2: Neuron Classification</h2>
   <div class="card-row">
-    <div class="card neuro full">
-      <div class="card-label">Three Layers of the Cerebellar Cortex</div>
+    <div class="card histo">
+      <div class="card-label">By Structure (Number of Processes)</div>
       <ul>
-        <li><strong>Molecular Layer (Outer):</strong> Poor in cells, contains mostly axons (parallel fibers) and dendrites.</li>
-        <li><strong>Purkinje Cell Layer (Middle):</strong> A single row of massive, flask-shaped <strong>Purkinje neurons</strong>. These are the sole output of the cerebellar cortex and are highly inhibitory (GABAergic).</li>
-        <li><strong>Granular Layer (Inner):</strong> Densely packed with tiny, deeply basophilic <strong>granule cells</strong> (the smallest neurons in the body) which look like lymphocytes under H&E staining.</li>
+        <li><strong>Multipolar:</strong> 1 axon + many dendrites. <em>Most common</em> type. Examples: motor neurons, Purkinje cells, pyramidal cells.</li>
+        <li><strong>Bipolar:</strong> 1 axon + 1 dendrite. Found in retina, olfactory epithelium, vestibulocochlear ganglion.</li>
+        <li><strong>Unipolar (Pseudounipolar):</strong> Single process that splits into two branches. Found in <em>dorsal root ganglia</em> (sensory neurons).</li>
       </ul>
     </div>
+    <div class="card histo">
+      <div class="card-label">By Function</div>
+      <ul>
+        <li><strong>Sensory (Afferent):</strong> Carry signals <em>TO</em> the CNS. Cell bodies in dorsal root ganglia (pseudounipolar).</li>
+        <li><strong>Motor (Efferent):</strong> Carry signals <em>FROM</em> the CNS to muscles/glands. Cell bodies in the ventral horn (multipolar).</li>
+        <li><strong>Interneurons:</strong> Connect neurons within the CNS. Most numerous type. All are multipolar.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Step 3: Glial Cells (Neuroglia)</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Cell Type</th><th>Location</th><th>Function</th><th>Key Identification</th><th>Clinical</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Astrocytes</strong></td><td>CNS</td><td>Structural support, form <strong>Blood-Brain Barrier</strong> (foot processes on capillaries), regulate ion/neurotransmitter levels, repair (gliosis)</td><td>Star-shaped, largest glial cell, GFAP positive</td><td>Astrocytomas (glioblastoma)</td></tr>
+        <tr><td><strong>Oligodendrocytes</strong></td><td>CNS</td><td>Produce <strong>myelin</strong> in CNS. One cell can myelinate <em>multiple</em> axons (up to 50)</td><td>Fewer processes than astrocytes, "fried egg" appearance on H&E</td><td>Multiple sclerosis (demyelination)</td></tr>
+        <tr><td><strong>Microglia</strong></td><td>CNS</td><td>Resident <strong>immune cells</strong> — phagocytosis of debris, dead cells, pathogens (the macrophages of the CNS)</td><td>Smallest glial cell, dark elongated nucleus, mesodermal origin (not neural crest!)</td><td>Activated in infection, neurodegeneration</td></tr>
+        <tr><td><strong>Ependymal Cells</strong></td><td>CNS</td><td><strong>Line the ventricles</strong> and central canal. Some are ciliated (move CSF). Modified ependymal cells form the <em>choroid plexus</em> (produces CSF)</td><td>Cuboidal/columnar epithelium lining ventricles</td><td>Ependymomas</td></tr>
+        <tr><td><strong>Schwann Cells</strong></td><td>PNS</td><td>Produce <strong>myelin</strong> in PNS. One cell myelinates <em>one</em> internode of one axon</td><td>Wrapped around peripheral nerve axons</td><td>Guillain-Barré syndrome, Schwannomas</td></tr>
+        <tr><td><strong>Satellite Cells</strong></td><td>PNS</td><td>Support neuronal cell bodies in <em>ganglia</em> (analogous to astrocytes in CNS)</td><td>Flat cells surrounding cell bodies in ganglia</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mnemonic">
+    <div class="mnemonic-label">🧠 Myelination Memory Trick</div>
+    <p><strong>O</strong>ligodendrocytes = <strong>O</strong>ne cell, many axons (CNS)<br>
+    <strong>S</strong>chwann cells = <strong>S</strong>ingle axon, one cell (PNS)</p>
+  </div>
+
+  <h2>Step 4: Cerebral Cortex — 6 Layers</h2>
+  <div class="card-row">
+    <div class="card histo full">
+      <div class="card-label">Neocortical Layers (Superficial → Deep)</div>
+      <ol>
+        <li><strong>I — Molecular Layer:</strong> Few cell bodies, mostly axons and dendrites (synaptic connections).</li>
+        <li><strong>II — External Granular Layer:</strong> Small pyramidal and stellate (granule) cells.</li>
+        <li><strong>III — External Pyramidal Layer:</strong> Medium pyramidal cells — send association and commissural fibers.</li>
+        <li><strong>IV — Internal Granular Layer:</strong> Stellate (granule) cells — <em>main input layer</em> receiving thalamocortical fibers. Thickest in sensory cortex.</li>
+        <li><strong>V — Internal Pyramidal Layer:</strong> <strong>Large pyramidal cells</strong> including <strong>Betz cells</strong> (giant motor neurons in precentral gyrus). <em>Main output layer</em> for motor commands.</li>
+        <li><strong>VI — Multiform (Polymorphic) Layer:</strong> Mixed cell types. Sends fibers back to the thalamus (corticothalamic).</li>
+      </ol>
+      <p style="margin-top:12px"><strong>Key exam point:</strong> Sensory cortex has thick layer IV (lots of input), motor cortex has thick layer V (lots of output, Betz cells).</p>
+    </div>
+  </div>
+
+  <h2>Step 5: Cerebellar Cortex — 3 Layers</h2>
+  <div class="card-row">
+    <div class="card neuro full">
+      <div class="card-label">Cerebellar Cortex Layers (Outer → Inner)</div>
+      <ul>
+        <li><strong>1. Molecular Layer (Outer):</strong> Sparse cells — mostly parallel fibers (axons of granule cells) and dendrites of Purkinje cells.</li>
+        <li><strong>2. Purkinje Cell Layer (Middle):</strong> A single row of massive, flask-shaped <strong>Purkinje neurons</strong>. These are the <em>sole output</em> of the cerebellar cortex. They are <strong>inhibitory (GABAergic)</strong> and project to deep cerebellar nuclei.</li>
+        <li><strong>3. Granular Layer (Inner):</strong> Densely packed with tiny <strong>granule cells</strong> — the smallest and most numerous neurons in the entire brain. They appear dark blue and look like lymphocytes on H&E staining.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Step 6: Spinal Cord Histology — Rexed Laminae</h2>
+  <div class="card-row">
+    <div class="card neuro full">
+      <div class="card-label">Grey Matter Organization (10 Laminae)</div>
+      <ul>
+        <li><strong>Appearance:</strong> H-shaped grey matter centrally, white matter peripherally — the <em>opposite</em> arrangement to the brain (where grey matter is on the outside).</li>
+        <li><strong>Rexed Laminae I-VI (Dorsal Horn = Sensory):</strong> Receive afferent sensory signals. Lamina II = <strong>Substantia Gelatinosa</strong> (key role in pain modulation via Gate Control Theory).</li>
+        <li><strong>Lamina VII (Intermediate Zone):</strong> Contains Clarke's column (nucleus dorsalis) — origin of the posterior spinocerebellar tract.</li>
+        <li><strong>Laminae VIII-IX (Ventral Horn = Motor):</strong> Contain large multipolar <strong>alpha motor neurons</strong> whose axons exit via the ventral root to supply skeletal muscle.</li>
+        <li><strong>Lamina X:</strong> Surrounds the central canal. Contains interneurons and commissural neurons.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exam-box">
+    <div class="exam-label">🎯 High-Yield Histology Summary</div>
+    <ul>
+      <li><strong>Betz cells</strong> = giant pyramidal neurons of the motor cortex (Layer V) — cerebral cortex</li>
+      <li><strong>Purkinje cells</strong> = large flask-shaped inhibitory neurons — cerebellar cortex</li>
+      <li><strong>Granule cells</strong> = smallest neurons in the body — cerebellar cortex</li>
+      <li><strong>Alpha motor neurons</strong> = large multipolar neurons — ventral horn of spinal cord</li>
+      <li><strong>Nissl bodies</strong> = RER in neuron cell body and dendrites (NOT in axon or axon hillock)</li>
+      <li><strong>Astrocytes</strong> form the BBB · <strong>Oligodendrocytes</strong> myelinate CNS · <strong>Schwann cells</strong> myelinate PNS</li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <div class="quiz-header"><h2>Section 13 Quiz</h2><button class="btn btn-gold" onclick="showAnswers(this)">Show All Answers</button></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q1</div><div class="mcq-question">Nissl bodies are found in which parts of the neuron?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Axon and dendrites</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Cell body and dendrites only</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Axon hillock and axon</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> All parts equally</button></div><div class="explanation"><strong>Answer: B.</strong> Nissl bodies (RER) are found in the cell body and dendrites but are absent from the axon and axon hillock.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q2</div><div class="mcq-question">The sole output cells of the cerebellar cortex are:</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Granule cells</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Purkinje cells</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Betz cells</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Stellate cells</button></div><div class="explanation"><strong>Answer: B.</strong> Purkinje cells are the sole output neurons of the cerebellar cortex. They are inhibitory (GABAergic).</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q3</div><div class="mcq-question">Which glial cell myelinates multiple axons in the CNS?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Schwann cells</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Oligodendrocytes</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Astrocytes</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Microglia</button></div><div class="explanation"><strong>Answer: B.</strong> Oligodendrocytes myelinate multiple axons in the CNS. Schwann cells myelinate single axons in the PNS.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q4</div><div class="mcq-question">The Substantia Gelatinosa (Lamina II) in the spinal cord is involved in:</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Motor output</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Pain modulation</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> CSF production</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Myelination</button></div><div class="explanation"><strong>Answer: B.</strong> The substantia gelatinosa (Rexed Lamina II) in the dorsal horn is a key site for pain modulation (Gate Control Theory).</div></div>
   </div>
 </div>
 
@@ -1243,32 +1365,166 @@ tr:nth-child(even) td{background:var(--cream)}
 <div class="section" id="s14">
   <div class="section-badge">Module 14</div>
   <div class="section-title">The Spinal Cord</div>
-  <div class="section-subtitle">Gross anatomy, blood supply, tracts, and embryology</div>
+  <div class="section-subtitle">Gross anatomy, cross-section, tracts, blood supply, clinical syndromes, and embryology</div>
 
-  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">The spinal cord is a vital transmission and integration centre connecting the brain to the peripheral nervous system. It originates at the <strong>foramen magnum</strong> and terminates at the <strong>L1 vertebral level</strong> in adults (L2-L3 in children) as a tapered structure called the <strong>conus medullaris</strong>. Beyond this point, the spinal nerve roots hang down like a horse's tail, forming the <strong>cauda equina</strong>. The pia mater continues downward as a single fine thread — the <strong>filum terminale</strong> — to anchor the cord to the coccyx. The cord features 31 pairs of spinal nerves and possesses distinct cervical and lumbar enlargements to accommodate the massive nerve plexuses supplying the limbs.</p>
+  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">The spinal cord is the body's information superhighway — a cylindrical column of nervous tissue that connects the brain to <strong>every part of the body below the neck</strong>. It is both a <em>conduit</em> (carrying signals up and down) and a <em>processing centre</em> (mediating reflexes). Understanding the spinal cord requires mastering its <strong>gross anatomy</strong> (shape, extent, enlargements, coverings), its <strong>internal structure</strong> (grey matter horns, white matter tracts), its <strong>blood supply</strong>, and the <strong>clinical syndromes</strong> that result when different parts are damaged.</p>
+
+  <div class="img-wrap">
+    <div class="img-title">Gross Anatomy of the Spinal Cord</div>
+    <img src="img_spinal_gross.png" alt="Full-length spinal cord showing cervical and lumbar enlargements, conus medullaris, cauda equina, and filum terminale">
+    <div class="img-caption">Figure 14.1 — The spinal cord extends from the foramen magnum to L1-L2 in adults. Note the cervical and lumbar enlargements supplying the limbs.</div>
+  </div>
+
+  <h2>Gross Anatomy — Key Landmarks</h2>
+  <div class="card-row">
+    <div class="card anatomy full">
+      <div class="card-label">Shape, Extent & Features</div>
+      <ul>
+        <li><strong>Origin:</strong> Begins at the <strong>foramen magnum</strong> as a continuation of the medulla oblongata.</li>
+        <li><strong>Termination:</strong> Tapers into the <strong>conus medullaris</strong> at <strong>L1-L2 in adults</strong> (L2-L3 in children, L3 at birth). This is crucial for safe lumbar puncture!</li>
+        <li><strong>Length:</strong> Approximately <strong>45 cm</strong> in adults (shorter than the vertebral column due to differential growth).</li>
+        <li><strong>Cervical Enlargement (C4-T1):</strong> Expanded region containing extra neurons for the <em>brachial plexus</em> — supplying the upper limbs.</li>
+        <li><strong>Lumbar Enlargement (L1-S3):</strong> Expanded region for the <em>lumbosacral plexus</em> — supplying the lower limbs.</li>
+        <li><strong>Cauda Equina:</strong> Below L1-L2, the spinal nerve roots hang freely like a horse's tail inside the dural sac, since the cord has already ended.</li>
+        <li><strong>Filum Terminale:</strong> A thin strand of pia mater extending from the conus medullaris to the coccyx, anchoring the cord.</li>
+        <li><strong>Denticulate Ligaments:</strong> 21 pairs of lateral extensions of pia mater that suspend the cord within the dural sac, attaching between nerve roots to the dura.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>31 Pairs of Spinal Nerves</h2>
+  <div class="card-row">
+    <div class="card neuro">
+      <div class="card-label">Nerve Segments</div>
+      <ul>
+        <li><strong>8 Cervical</strong> (C1-C8) — Note: there are 8 cervical nerves but only 7 cervical vertebrae. C1-C7 exit <em>above</em> their vertebra; C8 exits below C7.</li>
+        <li><strong>12 Thoracic</strong> (T1-T12)</li>
+        <li><strong>5 Lumbar</strong> (L1-L5)</li>
+        <li><strong>5 Sacral</strong> (S1-S5)</li>
+        <li><strong>1 Coccygeal</strong> (Co1)</li>
+        <li><strong>Total = 31 pairs</strong></li>
+      </ul>
+    </div>
+    <div class="card anatomy">
+      <div class="card-label">Key Dermatome Landmarks</div>
+      <ul>
+        <li><strong>C5:</strong> Lateral arm (deltoid region)</li>
+        <li><strong>C6:</strong> Thumb</li>
+        <li><strong>C7:</strong> Middle finger</li>
+        <li><strong>C8:</strong> Little finger</li>
+        <li><strong>T4:</strong> Nipple line</li>
+        <li><strong>T10:</strong> Umbilicus</li>
+        <li><strong>L1:</strong> Inguinal region</li>
+        <li><strong>S2-S4:</strong> Perineum and genitalia</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Cross-Sectional Anatomy</h2>
+  <div class="img-wrap">
+    <div class="img-title">Spinal Cord Cross-Section</div>
+    <img src="img_spinal_cross.png" alt="Cross-section of spinal cord showing H-shaped grey matter, dorsal horns, ventral horns, white matter columns">
+    <div class="img-caption">Figure 14.2 — The characteristic H-shaped grey matter is surrounded by three columns of white matter. Dorsal horn = sensory, ventral horn = motor.</div>
+  </div>
+
+  <div class="card-row">
+    <div class="card anatomy">
+      <div class="card-label">Grey Matter (H-Shape)</div>
+      <ul>
+        <li><strong>Dorsal (Posterior) Horn:</strong> <em>Sensory</em> — receives incoming afferent signals from the body (pain, temperature, touch, proprioception).</li>
+        <li><strong>Ventral (Anterior) Horn:</strong> <em>Motor</em> — contains large multipolar <strong>alpha motor neurons</strong> whose axons exit via the ventral root to innervate skeletal muscle.</li>
+        <li><strong>Lateral Horn:</strong> Present only at <strong>T1-L2</strong> (sympathetic) and <strong>S2-S4</strong> (parasympathetic) — contains autonomic preganglionic neurons.</li>
+        <li><strong>Central Canal:</strong> Lined by ependymal cells, contains CSF, continuous with the 4th ventricle above.</li>
+        <li><strong>Grey Commissure:</strong> Connects the two halves of the grey matter, surrounding the central canal.</li>
+      </ul>
+    </div>
+    <div class="card neuro">
+      <div class="card-label">White Matter (3 Columns)</div>
+      <ul>
+        <li><strong>Dorsal (Posterior) Column:</strong> Ascending — carries <em>fine touch, vibration, proprioception</em> (Fasciculus Gracilis for lower body, Fasciculus Cuneatus for upper body).</li>
+        <li><strong>Lateral Column:</strong> Contains the <em>lateral corticospinal tract</em> (descending motor, crossed) and the <em>lateral spinothalamic tract</em> (ascending, pain & temperature).</li>
+        <li><strong>Anterior (Ventral) Column:</strong> Contains the <em>anterior corticospinal tract</em> (descending motor, uncrossed) and <em>anterior spinothalamic tract</em> (crude touch & pressure).</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Major Ascending & Descending Tracts</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tract</th><th>Direction</th><th>Function</th><th>Crosses At</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Dorsal Columns</strong> (Gracilis/Cuneatus)</td><td>Ascending</td><td>Fine touch, vibration, proprioception</td><td>Medulla (internal arcuate fibers)</td></tr>
+        <tr><td><strong>Lateral Spinothalamic</strong></td><td>Ascending</td><td>Pain & Temperature</td><td>Spinal cord (at level of entry, in anterior white commissure)</td></tr>
+        <tr><td><strong>Anterior Spinothalamic</strong></td><td>Ascending</td><td>Crude touch & Pressure</td><td>Spinal cord (same level)</td></tr>
+        <tr><td><strong>Lateral Corticospinal</strong></td><td>Descending</td><td>Voluntary movement (distal muscles)</td><td>Medulla (pyramidal decussation) — 85% of fibers</td></tr>
+        <tr><td><strong>Anterior Corticospinal</strong></td><td>Descending</td><td>Voluntary movement (proximal/axial muscles)</td><td>Spinal cord (at level of destination) — 15% of fibers</td></tr>
+        <tr><td><strong>Spinocerebellar</strong></td><td>Ascending</td><td>Unconscious proprioception → cerebellum</td><td>Uncrossed (posterior) or crossed (anterior)</td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <h2>Blood Supply of the Spinal Cord</h2>
   <div class="card-row">
     <div class="card anatomy full">
       <div class="card-label">Arterial Network</div>
       <ul>
-        <li><strong>Anterior Spinal Artery:</strong> Runs down the anterior median fissure, supplying the anterior 2/3 of the cord (motor pathways and spinothalamic tracts).</li>
-        <li><strong>Posterior Spinal Arteries (two):</strong> Run down the posterior median sulci, supplying the posterior 1/3 (dorsal columns).</li>
-        <li><strong>Radicular Arteries:</strong> Enter via intervertebral foramina to reinforce the longitudinal supply. The largest is the <strong>Artery of Adamkiewicz (Arteria Radicularis Magna)</strong>, usually arising on the left between T9-T12. Damage during surgery leads to anterior spinal artery syndrome (motor loss).</li>
+        <li><strong>Anterior Spinal Artery (×1):</strong> Single artery running in the <em>anterior median fissure</em>. Supplies the <strong>anterior 2/3</strong> of the cord (motor tracts, spinothalamic tracts, ventral horns).</li>
+        <li><strong>Posterior Spinal Arteries (×2):</strong> Paired arteries on the posterolateral surface. Supply the <strong>posterior 1/3</strong> (dorsal columns, dorsal horns).</li>
+        <li><strong>Segmental / Radicular Arteries:</strong> Enter via intervertebral foramina to reinforce the longitudinal supply.</li>
+        <li><strong>Artery of Adamkiewicz:</strong> The single largest radicular artery, usually arising on the <strong>left between T9-T12</strong>. Critical during aortic surgery — damage causes <em>anterior spinal artery syndrome</em>.</li>
       </ul>
     </div>
   </div>
 
-  <h2>White Matter Tracts (Funiculi)</h2>
+  <h2>Clinical Spinal Cord Syndromes</h2>
   <div class="card-row">
-    <div class="card neuro full">
-      <div class="card-label">Ascending and Descending Pathways</div>
+    <div class="card clinical">
+      <div class="card-label">Brown-Séquard Syndrome (Hemisection)</div>
+      <p>Caused by <strong>hemisection</strong> of the spinal cord (e.g., stab wound):</p>
       <ul>
-        <li><strong>Anterior Funiculus:</strong> Contains descending motor fibers, including the anterior <em>corticospinal tract</em>.</li>
-        <li><strong>Lateral Funiculus:</strong> Contains the <em>lateral spinothalamic tract</em> (carries pain and temperature sensation).</li>
-        <li><strong>Dorsal Funiculus:</strong> Contains the <em>dorsal columns</em> (Gracile and Cuneate fasciculi), carrying fine touch, vibration, and conscious proprioception. Damage here leads to sensory ataxia and positive Romberg sign.</li>
+        <li><strong>Ipsilateral:</strong> Loss of motor function (corticospinal), loss of fine touch/proprioception (dorsal columns)</li>
+        <li><strong>Contralateral:</strong> Loss of pain & temperature (spinothalamic tract — because it crosses at spinal cord level)</li>
       </ul>
     </div>
+    <div class="card clinical">
+      <div class="card-label">Anterior Cord Syndrome</div>
+      <p>Caused by <strong>anterior spinal artery</strong> occlusion:</p>
+      <ul>
+        <li><strong>Lost:</strong> Motor function (bilateral), pain & temperature (bilateral spinothalamic)</li>
+        <li><strong>Preserved:</strong> Fine touch, vibration, proprioception (dorsal columns — supplied by posterior spinal arteries)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card-row">
+    <div class="card clinical">
+      <div class="card-label">Central Cord Syndrome</div>
+      <p>Usually from <strong>hyperextension injury</strong> in elderly with cervical spondylosis:</p>
+      <ul>
+        <li>Affects the central part of the cord (crossing spinothalamic fibers)</li>
+        <li><strong>"Cape-like" distribution</strong> of pain & temperature loss</li>
+        <li>Upper limbs affected more than lower limbs (arms are more medial in the cord)</li>
+      </ul>
+    </div>
+    <div class="card clinical">
+      <div class="card-label">Cauda Equina Syndrome</div>
+      <p><strong>Surgical emergency!</strong> Compression of the cauda equina (below L1-L2):</p>
+      <ul>
+        <li>Lower motor neuron signs (flaccid paralysis, areflexia)</li>
+        <li><strong>Saddle anaesthesia</strong> (S2-S4 distribution)</li>
+        <li>Bladder & bowel dysfunction (retention → overflow incontinence)</li>
+        <li>Causes: disc herniation, tumour, abscess</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exam-box">
+    <div class="exam-label">🎯 Clinical: Lumbar Puncture</div>
+    <ul>
+      <li><strong>Site:</strong> Between <strong>L3-L4 or L4-L5</strong> intervertebral space (below the conus medullaris at L1-L2, so the needle enters the cauda equina safely).</li>
+      <li><strong>Landmark:</strong> The <strong>supracristal line</strong> (a line connecting the highest points of the iliac crests) passes through the L4 spinous process.</li>
+      <li><strong>Layers pierced (superficial → deep):</strong> Skin → Subcutaneous tissue → Supraspinous ligament → Interspinous ligament → Ligamentum flavum → Epidural space → Dura mater → Arachnoid mater → <em>Subarachnoid space</em> (CSF collected here).</li>
+      <li><strong>Normal CSF pressure:</strong> 60-180 mmH₂O (patient in lateral decubitus position).</li>
+    </ul>
   </div>
 
   <h2>Embryology of the Spinal Cord</h2>
@@ -1276,13 +1532,34 @@ tr:nth-child(even) td{background:var(--cream)}
     <div class="card embryo full">
       <div class="card-label">Development from the Neural Tube</div>
       <ul>
-        <li>Develops from the caudal segment of the neural tube between weeks 4-8. Neural crest cells form the spinal ganglia.</li>
-        <li><strong>Alar Plate:</strong> The dorsal thickening of the neural tube that becomes the sensory <em>dorsal horn</em>.</li>
-        <li><strong>Basal Plate:</strong> The ventral thickening that becomes the motor <em>ventral horn</em>.</li>
-        <li><strong>Sulcus Limitans:</strong> A longitudinal groove separating the sensory alar plate from the motor basal plate.</li>
-        <li><strong>Abnormalities:</strong> Syringomyelia — a condition where the central canal becomes dilated, damaging crossing fibers (causes bilateral loss of pain and temperature).</li>
+        <li>Develops from the <strong>caudal segment of the neural tube</strong> between weeks 4-8. Neural crest cells migrate to form the spinal (dorsal root) ganglia.</li>
+        <li><strong>Alar Plate (dorsal):</strong> Thickening of the neural tube that becomes the sensory <em>dorsal horn</em> of the grey matter.</li>
+        <li><strong>Basal Plate (ventral):</strong> Thickening that becomes the motor <em>ventral horn</em>.</li>
+        <li><strong>Sulcus Limitans:</strong> A longitudinal groove separating the sensory alar plate from the motor basal plate — a key embryological landmark.</li>
+        <li><strong>Roof Plate & Floor Plate:</strong> Thin non-neural portions that become the posterior median septum and anterior median fissure respectively.</li>
+        <li><strong>Differential Growth:</strong> In early fetal life, the cord fills the entire vertebral canal. After month 3, the vertebral column grows faster → cord appears to "ascend" relative to the vertebrae (hence conus at L1-L2, not at the bottom).</li>
       </ul>
     </div>
+  </div>
+
+  <div class="mnemonic">
+    <div class="mnemonic-label">🧠 Spinal Cord Key Rules</div>
+    <ul>
+      <li><strong>Dorsal = Sensory, Ventral = Motor</strong> — "Dorsal Delivers (sensory info), Ventral Ventures out (motor commands)"</li>
+      <li><strong>Spinothalamic crosses at the cord</strong> → contralateral pain/temp loss</li>
+      <li><strong>Dorsal columns cross at the medulla</strong> → ipsilateral fine touch/proprioception loss below the lesion</li>
+      <li><strong>Corticospinal crosses at the pyramids</strong> → ipsilateral motor loss below the lesion</li>
+      <li><strong>Lumbar puncture at L3-L4</strong> — below the cord, into the cauda equina</li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <div class="quiz-header"><h2>Section 14 Quiz</h2><button class="btn btn-gold" onclick="showAnswers(this)">Show All Answers</button></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q1</div><div class="mcq-question">In adults, the spinal cord terminates at which vertebral level?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> T12</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> L1-L2</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> L4-L5</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> S1</button></div><div class="explanation"><strong>Answer: B.</strong> The spinal cord ends as the conus medullaris at L1-L2 in adults. Below this, only nerve roots (cauda equina) remain.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q2</div><div class="mcq-question">How many pairs of spinal nerves are there?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> 28</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> 31</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> 33</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> 30</button></div><div class="explanation"><strong>Answer: B.</strong> There are 31 pairs: 8 cervical, 12 thoracic, 5 lumbar, 5 sacral, 1 coccygeal.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q3</div><div class="mcq-question">In Brown-Séquard syndrome, pain and temperature loss occurs on which side?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Ipsilateral (same side as lesion)</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Contralateral (opposite side)</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Bilateral</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> No pain/temperature loss occurs</button></div><div class="explanation"><strong>Answer: B.</strong> The spinothalamic tract crosses at the spinal cord level, so hemisection causes contralateral loss of pain and temperature.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q4</div><div class="mcq-question">The Artery of Adamkiewicz usually arises at which level and on which side?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Right side, C4-C6</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Left side, T9-T12</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Left side, L3-L5</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Right side, T1-T4</button></div><div class="explanation"><strong>Answer: B.</strong> The artery of Adamkiewicz is the largest segmental artery, typically arising from the left between T9-T12.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q5</div><div class="mcq-question">Where is a lumbar puncture performed and why?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> T12-L1 to access the conus</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> L3-L4 because the cord has already ended above</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> L5-S1 for maximum CSF volume</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> C1-C2 for cisternal tap</button></div><div class="explanation"><strong>Answer: B.</strong> LP is done at L3-L4 (or L4-L5) because the cord ends at L1-L2. The needle enters the subarachnoid space containing only the cauda equina, which can safely move aside.</div></div>
   </div>
 </div>
 
@@ -1326,16 +1603,39 @@ tr:nth-child(even) td{background:var(--cream)}
      JAVASCRIPT
      ═══════════════════════════════════ -->
 <script>
-// Navigation
+// ═══════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════
 function show(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   if(event && event.currentTarget) event.currentTarget.classList.add('active');
   window.scrollTo({top: 0, behavior: 'smooth'});
+  // Re-trigger entrance animations for newly visible section
+  setTimeout(() => observeElements(), 100);
 }
 
-// MCQ click handler
+// ═══════════════════════════════════
+// MCQ SYSTEM WITH CONFETTI
+// ═══════════════════════════════════
+function createConfetti(el) {
+  const rect = el.getBoundingClientRect();
+  const colors = ['#2d8659','#d4a017','#1a6b54','#e8c547','#3da86a'];
+  for(let i = 0; i < 24; i++) {
+    const conf = document.createElement('div');
+    conf.style.cssText = `position:fixed;width:${4+Math.random()*6}px;height:${4+Math.random()*6}px;background:${colors[i%colors.length]};border-radius:${Math.random()>0.5?'50%':'2px'};left:${rect.left+rect.width/2}px;top:${rect.top+20}px;pointer-events:none;z-index:9999;opacity:1;transition:all ${0.6+Math.random()*0.8}s cubic-bezier(0.25,0.46,0.45,0.94)`;
+    document.body.appendChild(conf);
+    requestAnimationFrame(() => {
+      conf.style.left = (rect.left + rect.width/2 + (Math.random()-0.5)*200) + 'px';
+      conf.style.top = (rect.top - 40 - Math.random()*120) + 'px';
+      conf.style.opacity = '0';
+      conf.style.transform = `rotate(${Math.random()*360}deg) scale(0.3)`;
+    });
+    setTimeout(() => conf.remove(), 1500);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.mcq-option').forEach(btn => {
     btn.addEventListener('click', function() {
@@ -1343,8 +1643,21 @@ document.addEventListener('DOMContentLoaded', () => {
       if(item.classList.contains('answered')) return;
       this.classList.add('selected');
       item.classList.add('answered');
+      // Confetti for correct answers!
+      if(this.getAttribute('data-correct') === 'true') {
+        createConfetti(this);
+        item.style.borderColor = 'var(--sage2)';
+        item.style.boxShadow = '0 0 20px rgba(45,134,89,0.15)';
+      } else {
+        item.style.borderColor = 'var(--coral2)';
+      }
     });
   });
+
+  // Initialize all systems
+  observeElements();
+  initParticles();
+  initProgressBar();
 });
 
 // Show all answers for a section quiz
@@ -1368,8 +1681,110 @@ function showAllMCQ() {
 function resetAllMCQ() {
   document.getElementById('smcq').querySelectorAll('.mcq-item').forEach(item => {
     item.classList.remove('answered');
+    item.style.borderColor = '';
+    item.style.boxShadow = '';
     item.querySelectorAll('.mcq-option').forEach(o => o.classList.remove('selected'));
   });
+}
+
+// ═══════════════════════════════════
+// SCROLL-TRIGGERED ENTRANCE ANIMATIONS
+// ═══════════════════════════════════
+function observeElements() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if(entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.card, .mcq-item, .img-wrap, .table-wrap, .mnemonic, .exam-box').forEach(el => {
+    if(!el.classList.contains('visible')) observer.observe(el);
+  });
+}
+
+// ═══════════════════════════════════
+// PROGRESS BAR
+// ═══════════════════════════════════
+function initProgressBar() {
+  const bar = document.getElementById('progress-bar');
+  if(!bar) return;
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+    bar.style.width = pct + '%';
+  });
+}
+
+// ═══════════════════════════════════
+// FLOATING NEURON PARTICLES
+// ═══════════════════════════════════
+function initParticles() {
+  const canvas = document.getElementById('particles-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h, particles = [];
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Create neuron-like particles
+  const count = Math.min(35, Math.floor(window.innerWidth / 40));
+  for(let i = 0; i < count; i++) {
+    particles.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: 1.5 + Math.random() * 2.5,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.3,
+      alpha: 0.15 + Math.random() * 0.25,
+      color: ['#1a6b54','#2d8659','#d4a017','#22896c','#3da86a'][Math.floor(Math.random()*5)]
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    // Draw connections
+    for(let i = 0; i < particles.length; i++) {
+      for(let j = i+1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < 140) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(26,107,84,${0.06 * (1 - dist/140)})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+    // Draw particles
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      // Move
+      p.x += p.vx;
+      p.y += p.vy;
+      if(p.x < -10) p.x = w + 10;
+      if(p.x > w + 10) p.x = -10;
+      if(p.y < -10) p.y = h + 10;
+      if(p.y > h + 10) p.y = -10;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
 }
 </script>
 
