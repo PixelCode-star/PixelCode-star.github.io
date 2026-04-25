@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BMHA 220/221 — Head, Neck &amp; CNS Ultimate Study Guide</title>
+<meta name="description" content="Comprehensive interactive study guide for BMHA220/221 Head, Neck and CNS Anatomy at UNILUS School of Medicine.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ══════════════════════════════════════
+   DESIGN SYSTEM
+   ══════════════════════════════════════ */
+:root{
+  --navy:#0a1628;--navy2:#14253d;--navy3:#1e3554;--navy4:#2a4a6e;
+  --cream:#f8f4ec;--cream2:#f0ebe0;--cream3:#e4ddd0;--cream4:#d4ccbc;
+  --gold:#c8973a;--gold2:#e8b655;--gold3:#f0cc78;--gold-glow:rgba(200,151,58,0.15);
+  --teal:#1a7a6a;--teal2:#28a090;--teal3:#3cc0b0;
+  --coral:#b84030;--coral2:#d85848;--coral3:#f07868;
+  --sage:#3a7a4a;--sage2:#58a868;--sage3:#78c888;
+  --purple:#5a2d80;--purple2:#7a4daa;--purple3:#9a70c8;
+  --rose:#c04878;--rose2:#e06898;
+  --text:#18120a;--text2:#3a3028;--text3:#6a5a44;--text4:#9a8a70;
+  --border:#c8b898;--border-light:#ddd4c0;
+  --radius:10px;--radius-lg:14px;
+  --shadow-sm:0 2px 8px rgba(10,22,40,0.06);
+  --shadow-md:0 4px 20px rgba(10,22,40,0.08);
+  --shadow-lg:0 8px 40px rgba(10,22,40,0.12);
+  --transition:all 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--text);min-height:100vh;font-size:15.5px;line-height:1.78;display:flex}
+
+/* ══════════════════════════════════════
+   SIDEBAR
+   ══════════════════════════════════════ */
+#sidebar{width:272px;min-height:100vh;background:linear-gradient(180deg,var(--navy) 0%,#0d1e35 100%);color:var(--cream);flex-shrink:0;overflow-y:auto;position:sticky;top:0;height:100vh;z-index:100;border-right:1px solid rgba(200,151,58,0.15)}
+#sidebar::-webkit-scrollbar{width:4px}
+#sidebar::-webkit-scrollbar-thumb{background:var(--navy3);border-radius:4px}
+#sidebar-header{padding:28px 22px 20px;border-bottom:1px solid rgba(255,255,255,0.06);background:linear-gradient(135deg,rgba(200,151,58,0.08),transparent)}
+#sidebar-header h1{font-family:'Playfair Display',serif;font-size:19px;color:var(--gold2);line-height:1.3;margin-bottom:6px}
+#sidebar-header p{font-size:11px;color:#6a8aaa;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px}
+.nav-section{padding:14px 0 4px}
+.nav-section-title{padding:8px 22px;font-size:9.5px;font-family:'JetBrains Mono',monospace;color:#4a6a88;text-transform:uppercase;letter-spacing:2px;font-weight:600}
+.nav-item{display:block;padding:9px 22px 9px 30px;font-size:13px;color:#7a9aba;cursor:pointer;transition:var(--transition);border-left:2.5px solid transparent;text-decoration:none;line-height:1.4;font-family:'Inter',sans-serif;font-weight:400}
+.nav-item:hover{color:var(--cream);background:rgba(255,255,255,0.04);border-left-color:var(--gold)}
+.nav-item.active{color:var(--gold2);background:rgba(200,151,58,0.08);border-left-color:var(--gold);font-weight:500}
+.nav-item.mcq-link{color:var(--gold2);font-weight:600}
+
+/* ══════════════════════════════════════
+   MAIN CONTENT
+   ══════════════════════════════════════ */
+#main{flex:1;max-width:960px;padding:0 0 100px}
+.section{display:none;padding:48px 52px}
+.section.active{display:block;animation:sectionIn 0.4s ease}
+@keyframes sectionIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══════════════════════════════════════
+   LANDING / HERO
+   ══════════════════════════════════════ */
+#landing{padding:0}
+.hero{position:relative;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 40%,var(--navy3) 100%);color:var(--cream);padding:64px 56px 48px;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(200,151,58,0.12),transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-40px;left:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(42,128,144,0.1),transparent 70%);border-radius:50%}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:3px;margin-bottom:16px;position:relative}
+.hero h1{font-family:'Playfair Display',serif;font-size:42px;font-weight:800;line-height:1.15;margin-bottom:12px;position:relative}
+.hero h1 span{color:var(--gold2)}
+.hero-sub{font-size:17px;color:#8aaac8;line-height:1.6;margin-bottom:28px;max-width:540px;position:relative}
+.hero-stats{display:flex;gap:32px;position:relative}
+.hero-stat{text-align:center}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--gold2)}
+.hero-stat-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:#6a8aaa;text-transform:uppercase;letter-spacing:1.5px;margin-top:2px}
+.hero-brain{position:absolute;right:40px;top:50%;transform:translateY(-50%);width:280px;opacity:0.85;border-radius:16px;filter:drop-shadow(0 8px 32px rgba(0,0,0,0.4))}
+
+.landing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;padding:40px 52px}
+.landing-card{background:white;border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:28px;cursor:pointer;transition:var(--transition);position:relative;overflow:hidden}
+.landing-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--gold)}
+.landing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--radius-lg) var(--radius-lg) 0 0}
+.landing-card:nth-child(1)::before{background:var(--coral2)}
+.landing-card:nth-child(2)::before{background:var(--teal2)}
+.landing-card:nth-child(3)::before{background:var(--purple2)}
+.landing-card:nth-child(4)::before{background:var(--gold)}
+.landing-card:nth-child(5)::before{background:var(--sage2)}
+.landing-card:nth-child(6)::before{background:var(--rose)}
+.landing-card:nth-child(7)::before{background:var(--navy4)}
+.landing-card:nth-child(8)::before{background:var(--coral3)}
+.landing-icon{font-size:28px;margin-bottom:12px}
+.landing-card h3{font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin-bottom:6px}
+.landing-card p{font-size:13px;color:var(--text3);line-height:1.5}
+
+/* ══════════════════════════════════════
+   TYPOGRAPHY
+   ══════════════════════════════════════ */
+.section-badge{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;font-weight:600}
+.section-title{font-family:'Playfair Display',serif;font-size:34px;color:var(--navy);line-height:1.2;margin-bottom:8px;font-weight:700}
+.section-subtitle{font-size:15px;color:var(--text3);margin-bottom:32px;font-style:italic;line-height:1.5}
+h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--navy2);margin:36px 0 16px;display:flex;align-items:center;gap:12px}
+h2::before{content:'';display:inline-block;width:4px;height:22px;background:linear-gradient(180deg,var(--gold),var(--gold2));border-radius:2px;flex-shrink:0}
+h3{font-family:'Source Serif 4',serif;font-weight:600;font-size:16px;color:var(--navy3);margin:20px 0 10px;padding-left:16px;border-left:3px solid var(--teal)}
+.divider{height:1px;background:linear-gradient(90deg,var(--gold),var(--gold3),transparent);margin:36px 0}
+
+/* ══════════════════════════════════════
+   CARDS
+   ══════════════════════════════════════ */
+.card-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin:18px 0}
+.card{background:white;border:1px solid var(--border-light);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-sm);transition:var(--transition)}
+.card:hover{box-shadow:var(--shadow-md)}
+.card.full{grid-column:1/-1}
+.card-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1.8px;margin-bottom:10px;font-weight:600}
+.card.anatomy .card-label{color:var(--teal)}
+.card.clinical .card-label{color:var(--coral2)}
+.card.embryo .card-label{color:var(--purple2)}
+.card.histo .card-label{color:var(--rose)}
+.card.neuro .card-label{color:var(--navy4)}
+.card p,.card li{font-size:14.5px;line-height:1.75;color:var(--text2)}
+.card ul,.card ol{padding-left:22px;margin-top:8px}
+.card li{margin-bottom:6px}
+.card li strong{color:var(--navy)}
+
+/* ══════════════════════════════════════
+   EXAM/ALERT BOXES
+   ══════════════════════════════════════ */
+.exam-box{background:linear-gradient(135deg,var(--navy),var(--navy2));color:var(--cream);border-radius:var(--radius-lg);padding:24px 28px;margin:28px 0;border-left:4px solid var(--gold);box-shadow:var(--shadow-lg)}
+.exam-box .exam-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;font-weight:600;display:flex;align-items:center;gap:8px}
+.exam-box p,.exam-box li{font-size:14.5px;line-height:1.75;color:#c0d4e8}
+.exam-box ul,.exam-box ol{padding-left:22px}
+.exam-box strong{color:var(--gold2)}
+.exam-box h3{color:var(--gold3);border-left-color:var(--gold);margin-top:20px}
+
+/* ══════════════════════════════════════
+   IMAGES
+   ══════════════════════════════════════ */
+.img-wrap{margin:28px 0;background:white;border:1px solid var(--border-light);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md)}
+.img-title{background:linear-gradient(90deg,var(--navy2),var(--navy3));color:var(--cream);font-family:'JetBrains Mono',monospace;font-size:11px;padding:14px 20px;letter-spacing:1.2px;text-transform:uppercase;font-weight:500}
+.img-wrap img{width:100%;display:block;max-height:500px;object-fit:contain;background:#fafafa;padding:12px}
+.img-caption{padding:12px 20px;font-size:12px;color:var(--text3);font-style:italic;background:var(--cream2);border-top:1px solid var(--border-light)}
+
+/* ══════════════════════════════════════
+   SVG DIAGRAMS
+   ══════════════════════════════════════ */
+.diagram-wrap{margin:28px 0;background:white;border:1px solid var(--border-light);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
+.diagram-title{background:linear-gradient(90deg,var(--navy2),var(--navy3));color:var(--cream);font-family:'JetBrains Mono',monospace;font-size:11px;padding:14px 20px;letter-spacing:1.2px;text-transform:uppercase;font-weight:500}
+.diagram-wrap svg{width:100%;height:auto;display:block}
+
+/* ══════════════════════════════════════
+   TABLES
+   ══════════════════════════════════════ */
+.table-wrap{overflow-x:auto;margin:24px 0;border-radius:var(--radius);border:1px solid var(--border-light);box-shadow:var(--shadow-sm)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:white}
+th{background:linear-gradient(90deg,var(--navy2),var(--navy3));color:var(--cream);padding:14px 18px;text-align:left;font-family:'Inter',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.3px}
+td{padding:12px 18px;border-bottom:1px solid var(--cream3);color:var(--text2);font-size:14px}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--cream)}
+
+/* ══════════════════════════════════════
+   MNEMONICS
+   ══════════════════════════════════════ */
+.mnemonic{background:linear-gradient(135deg,#fff8ec,#fff4e0);border:1px solid var(--gold);border-left:5px solid var(--gold);border-radius:var(--radius);padding:20px 24px;margin:24px 0;box-shadow:var(--shadow-sm)}
+.mnemonic-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;font-weight:700}
+.mnemonic p{font-size:15px;color:var(--text);line-height:1.7}
+.mnemonic strong{color:var(--coral);font-weight:700}
+.mnemonic ul{padding-left:20px;margin-top:8px}
+.mnemonic li{font-size:14px;margin-bottom:4px}
+
+/* ══════════════════════════════════════
+   MCQ SYSTEM (Section Quizzes)
+   ══════════════════════════════════════ */
+.quiz-section{margin-top:40px;padding-top:28px;border-top:2px solid var(--gold3)}
+.quiz-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.quiz-header h2{margin:0}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:8px;border:none;font-family:'Inter',sans-serif;font-size:13px;cursor:pointer;font-weight:600;transition:var(--transition);letter-spacing:0.3px}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);box-shadow:0 2px 8px rgba(200,151,58,0.3)}
+.btn-gold:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(200,151,58,0.4)}
+.btn-navy{background:var(--navy2);color:var(--cream)}
+.btn-navy:hover{background:var(--navy3)}
+
+.mcq-item{background:white;border:1.5px solid var(--border-light);border-radius:var(--radius-lg);padding:28px;margin-bottom:24px;transition:var(--transition);box-shadow:var(--shadow-sm)}
+.mcq-qnum{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;font-weight:700}
+.mcq-question{font-size:16px;font-weight:600;color:var(--navy);margin-bottom:20px;line-height:1.55;font-family:'Source Serif 4',serif}
+.mcq-options{display:flex;flex-direction:column;gap:10px}
+.mcq-option{display:flex;align-items:flex-start;gap:14px;padding:13px 18px;border-radius:8px;border:1.5px solid var(--cream3);background:var(--cream);cursor:pointer;transition:var(--transition);font-size:14.5px;color:var(--text2);line-height:1.55;text-align:left;width:100%;font-family:'Source Serif 4',serif}
+.mcq-option:hover:not(.locked){border-color:var(--navy4);background:white;transform:translateX(4px)}
+.mcq-option .opt-letter{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--text4);flex-shrink:0;width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:var(--cream3);border-radius:6px;margin-top:1px;transition:var(--transition)}
+
+/* Answer States */
+.mcq-item.answered .mcq-option[data-correct="true"]{border-color:var(--sage);background:#eef8f0;color:var(--sage)}
+.mcq-item.answered .mcq-option[data-correct="true"] .opt-letter{background:var(--sage);color:white}
+.mcq-item.answered .mcq-option.selected[data-correct="false"]{border-color:var(--coral);background:#fef5f4;color:var(--coral)}
+.mcq-item.answered .mcq-option.selected[data-correct="false"] .opt-letter{background:var(--coral);color:white}
+.mcq-item.answered .mcq-option{pointer-events:none}
+.mcq-option.locked{pointer-events:none}
+
+.explanation{display:none;margin-top:20px;background:linear-gradient(135deg,var(--navy2),var(--navy3));color:#c0d4e8;border-radius:var(--radius);padding:18px 22px;font-size:14px;line-height:1.7;border-left:4px solid var(--gold)}
+.mcq-item.answered .explanation{display:block;animation:fadeSlide 0.4s ease}
+.explanation strong{color:var(--gold2)}
+
+/* Show All Answers Button */
+.show-answers-btn{margin-top:20px}
+
+@keyframes fadeSlide{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media(max-width:900px){
+  .hero-brain{display:none}
+  .hero h1{font-size:30px}
+  .hero{padding:40px 28px 32px}
+}
+@media(max-width:768px){
+  body{flex-direction:column}
+  #sidebar{width:100%;height:auto;position:static;max-height:45vh}
+  #main{padding:0}
+  .section{padding:28px 20px}
+  .card-row{grid-template-columns:1fr}
+  .landing-grid{padding:24px 20px;grid-template-columns:1fr}
+  .hero-stats{flex-wrap:wrap;gap:20px}
+}
+
+/* ══════════════════════════════════════
+   PRINT
+   ══════════════════════════════════════ */
+@media print{
+  #sidebar{display:none}
+  #main{max-width:100%;padding:0}
+  .section{display:block!important;page-break-after:always;padding:20px}
+  .explanation{display:block!important;background:#f5f5f5!important;color:#222!important;border:1px solid #ccc}
+  .explanation strong{color:#222!important}
+  body{background:#fff;display:block}
+  .exam-box{background:#f0f0f0!important;color:#222!important;border:1px solid #888}
+  .exam-box *{color:#222!important}
+  .hero{background:#f0f0f0!important;color:#222!important}
+  .hero *{color:#222!important}
+}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <div id="sidebar-header">
+    <h1>BMHA 220/221<br>Study Guide</h1>
+    <p>Head · Neck · CNS</p>
+    <p style="margin-top:4px;font-size:10px;color:#4a6888">UNILUS School of Medicine</p>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">Start Here</div>
+    <a class="nav-item active" onclick="show('landing')">🏠 Home</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">Head & Neck</div>
+    <a class="nav-item" onclick="show('s1')">1. Embryology & Dev</a>
+    <a class="nav-item" onclick="show('s2')">2. Scalp & Skull</a>
+    <a class="nav-item" onclick="show('s3')">3. Muscles of the Head</a>
+    <a class="nav-item" onclick="show('s4')">4. TMJ & Joints</a>
+    <a class="nav-item" onclick="show('s5')">5. Neck Triangles</a>
+    <a class="nav-item" onclick="show('s6')">6. Cranial Nerves & Vessels</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">Central Nervous System</div>
+    <a class="nav-item" onclick="show('s7')">7. Brain External Anatomy</a>
+    <a class="nav-item" onclick="show('s8')">8. Functional Brain Regions</a>
+    <a class="nav-item" onclick="show('s9')">9. Ventricles & CSF</a>
+    <a class="nav-item" onclick="show('s10')">10. Internal Brain &amp; White Matter</a>
+    <a class="nav-item" onclick="show('s11')">11. Blood Supply &amp; Circle of Willis</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">Clinical & Practice</div>
+    <a class="nav-item" onclick="show('s12')">12. Clinical Scenarios</a>
+    <a class="nav-item mcq-link" onclick="show('smcq')">📝 Master MCQ Bank</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ═══════════════════════════════════
+     LANDING PAGE
+     ═══════════════════════════════════ -->
+<div class="section active" id="landing">
+  <div class="hero">
+    <div class="hero-badge">BMHA 220 / 221 · UNILUS Year 2 Medicine</div>
+    <h1>Head, Neck &amp; <span>Brain</span><br>Anatomy Mastery</h1>
+    <p class="hero-sub">The definitive interactive study guide covering embryology, osteology, muscles, nerves, brain anatomy, clinical scenarios, and 60+ practice questions — all from your lecture notes, past papers, and The Big Picture textbook.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">12</div><div class="hero-stat-label">Chapters</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">60+</div><div class="hero-stat-label">MCQs</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">Diagrams</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">2</div><div class="hero-stat-label">Scenarios</div></div>
+    </div>
+    <img src="img_brain_lateral.png" alt="Brain Lateral View" class="hero-brain"/>
+  </div>
+  <div class="landing-grid">
+    <div class="landing-card" onclick="show('s1')"><div class="landing-icon">🧬</div><h3>Embryology & Development</h3><p>Pharyngeal arches, facial segments, intramembranous ossification, and congenital anomalies.</p></div>
+    <div class="landing-card" onclick="show('s2')"><div class="landing-icon">🦴</div><h3>Scalp & Skull</h3><p>5 layers (SCALP mnemonic), cranial vs facial bones, foramina, and fracture patterns.</p></div>
+    <div class="landing-card" onclick="show('s3')"><div class="landing-icon">💪</div><h3>Muscles of the Head</h3><p>Facial expression vs mastication muscles, nerve supply, and clinical testing.</p></div>
+    <div class="landing-card" onclick="show('s7')"><div class="landing-icon">🧠</div><h3>Brain External Anatomy</h3><p>Lobes, sulci, gyri, cerebellum, brainstem, and meninges in full detail.</p></div>
+    <div class="landing-card" onclick="show('s8')"><div class="landing-icon">⚡</div><h3>Functional Brain Regions</h3><p>Motor cortex, sensory cortex, Broca's area, Wernicke's area, and the homunculus.</p></div>
+    <div class="landing-card" onclick="show('s9')"><div class="landing-icon">💧</div><h3>Ventricles & CSF</h3><p>CSF production, circulation pathway, hydrocephalus, and clinical scenarios.</p></div>
+    <div class="landing-card" onclick="show('s11')"><div class="landing-icon">❤️</div><h3>Circle of Willis</h3><p>Arterial supply, watershed areas, stroke pathophysiology, and the internal capsule.</p></div>
+    <div class="landing-card" onclick="show('smcq')"><div class="landing-icon">📝</div><h3>MCQ Practice</h3><p>60+ exam-style questions with instant feedback and detailed explanations.</p></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     S1: EMBRYOLOGY
+     ═══════════════════════════════════ -->
+<div class="section" id="s1">
+  <div class="section-badge">Module 1</div>
+  <div class="section-title">Embryology &amp; Development</div>
+  <div class="section-subtitle">Pharyngeal arches, facial development, intramembranous ossification</div>
+
+  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">Before we look at the individual structures of the head and neck, we need to understand <em>where they came from</em>. The head and neck develop from special embryonic structures called <strong>pharyngeal (branchial) arches</strong> — segmental bars of tissue that appear in the embryo's neck region during the 4th week of development. Think of these like building blocks: each arch comes pre-packaged with its own artery, nerve, cartilage, and muscle tissue, and each one eventually gives rise to a specific set of adult structures. Understanding which arch produces which muscle (and which nerve supplies it) is <em>the</em> key to making sense of head and neck innervation patterns — and it is one of the most commonly examined topics.</p>
+
+  <div class="card-row">
+    <div class="card embryo full">
+      <div class="card-label">Key Developmental Facts</div>
+      <ul>
+        <li><strong>The face develops from 3 segments</strong> embryologically — frontonasal prominence, maxillary prominences, and mandibular prominences.</li>
+        <li><strong>The neck develops from 6 segmental sclerotomes</strong> which give rise to the cervical vertebrae and associated structures.</li>
+        <li><strong>Cranial bones develop via intramembranous ossification</strong> — mesenchymal cells surround the developing brain and ossify directly into flat bone without a cartilage intermediate. This is different from endochondral ossification (limbs).</li>
+        <li><strong>There are 6 pharyngeal (branchial) arches</strong>, though the 5th is rudimentary. Each arch contains: an artery, a cartilage bar, a nerve, and muscle tissue.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Pharyngeal Arches — The Master Blueprint</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Arch</th><th>Nerve</th><th>Muscles</th><th>Skeletal Derivatives</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1st (Mandibular)</strong></td><td>CN V3 (Trigeminal, mandibular division)</td><td>Muscles of mastication (masseter, temporalis, medial & lateral pterygoid), mylohyoid, anterior belly of digastric, tensor tympani, tensor veli palatini</td><td>Meckel's cartilage → malleus, incus, mandible (partial)</td></tr>
+        <tr><td><strong>2nd (Hyoid)</strong></td><td>CN VII (Facial)</td><td>Muscles of facial expression, stapedius, stylohyoid, posterior belly of digastric, platysma</td><td>Reichert's cartilage → stapes, styloid process, lesser horn of hyoid, stylohyoid ligament</td></tr>
+        <tr><td><strong>3rd</strong></td><td>CN IX (Glossopharyngeal)</td><td>Stylopharyngeus</td><td>Greater horn and body of hyoid bone</td></tr>
+        <tr><td><strong>4th & 6th</strong></td><td>CN X (Vagus) — superior laryngeal (4th), recurrent laryngeal (6th)</td><td>Cricothyroid (4th), all intrinsic laryngeal muscles (6th)</td><td>Laryngeal cartilages (thyroid, cricoid, arytenoid)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="exam-box">
+    <div class="exam-label">🎯 High-Yield Exam Facts</div>
+    <ul>
+      <li><strong>1st arch = Mastication (CN V3)</strong> — if asked "which arch gives muscles of mastication?" → always 1st.</li>
+      <li><strong>2nd arch = Facial expression (CN VII)</strong> — these muscles are unique because they insert into <em>skin</em>, not bone.</li>
+      <li>Cleft lip = failure of fusion of maxillary and medial nasal prominences.</li>
+      <li>Cleft palate = failure of fusion of palatine shelves.</li>
+      <li>DiGeorge syndrome = failure of development of 3rd & 4th pharyngeal pouches → absent thymus & parathyroids.</li>
+    </ul>
+  </div>
+
+  <!-- SECTION QUIZ -->
+  <div class="quiz-section">
+    <div class="quiz-header">
+      <h2>Section 1 Quiz</h2>
+      <button class="btn btn-gold" onclick="showAnswers(this)">Show All Answers</button>
+    </div>
+    <div class="mcq-item"><div class="mcq-qnum">Q1</div><div class="mcq-question">The face develops from how many segments embryologically?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> 2</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> 3</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> 4</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> 6</button></div><div class="explanation"><strong>Answer: B.</strong> The face develops from 3 segments: the frontonasal prominence and the paired maxillary and mandibular prominences from the 1st pharyngeal arch.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q2</div><div class="mcq-question">The 2nd pharyngeal arch gives rise to which muscles?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Muscles of mastication</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Muscles of facial expression</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Stylopharyngeus</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Intrinsic laryngeal muscles</button></div><div class="explanation"><strong>Answer: B.</strong> The 2nd pharyngeal arch gives rise to muscles of facial expression, innervated by CN VII (Facial nerve).</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q3</div><div class="mcq-question">Cranial bones develop via which type of ossification?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Endochondral ossification</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Intramembranous ossification</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Perichondral ossification</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Appositional growth</button></div><div class="explanation"><strong>Answer: B.</strong> Flat bones of the skull develop via intramembranous ossification, where mesenchymal cells differentiate directly into osteoblasts without a cartilage template.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     S2: SCALP & SKULL
+     ═══════════════════════════════════ -->
+<div class="section" id="s2">
+  <div class="section-badge">Module 2</div>
+  <div class="section-title">The Scalp &amp; Skull</div>
+  <div class="section-subtitle">Five layers, bone groups, foramina, and fracture patterns</div>
+
+  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">The scalp is the soft tissue covering the top of the skull — but it is far from simple. It is arranged in <strong>5 distinct layers</strong> that you need to know by heart (use the mnemonic <strong>SCALP</strong>). Clinically, the most important layer is the 4th — the loose areolar tissue — because this is the "danger zone" where blood, pus, and infections can spread freely across the entire top of the head. Below the scalp sit the bones of the skull, which are divided into <strong>cranial bones</strong> (protecting the brain) and <strong>facial bones</strong> (forming the skeleton of the face). These bones are pierced by numerous <strong>foramina</strong> (holes) that transmit nerves and blood vessels — knowing which structure passes through which foramen is essential for exams.</p>
+
+  <div class="img-wrap">
+    <div class="img-title">Cross-Section of the Scalp Layers</div>
+    <img src="img_scalp_layers.png" alt="Scalp layers cross-section showing Skin, Connective tissue, Aponeurosis, Loose areolar tissue, and Pericranium">
+    <div class="img-caption">Figure 2.1 — The 5 layers of the scalp (SCALP mnemonic). Note the loose areolar tissue is the "danger zone" where infections and hematomas spread freely.</div>
+  </div>
+
+  <div class="mnemonic">
+    <div class="mnemonic-label">🧠 SCALP Mnemonic</div>
+    <p><strong>S</strong> — <strong>S</strong>kin: thick, hair-bearing, contains sebaceous glands. Bleeds profusely when lacerated (vessels held open by dense connective tissue below).<br>
+    <strong>C</strong> — Sub<strong>c</strong>utaneous Connective Tissue: dense fibrous tissue containing blood vessels and nerves. Acts as a "closed compartment".<br>
+    <strong>A</strong> — <strong>A</strong>poneurosis (Galea Aponeurotica): tough fibromuscular sheet connecting frontalis (anteriorly) and occipitalis (posteriorly). Surgically important plane.<br>
+    <strong>L</strong> — <strong>L</strong>oose Areolar Tissue: the <strong>"DANGER ZONE"</strong> — infection, hematoma and blood can spread widely and freely here across the whole calvaria. Emissary veins pass through this layer and can transmit infection intracranially.<br>
+    <strong>P</strong> — <strong>P</strong>ericranium: the periosteum of the skull bones. Firmly attached at suture lines.</p>
+  </div>
+
+  <h2>Bones of the Skull</h2>
+  <div class="card-row">
+    <div class="card anatomy">
+      <div class="card-label">Cranial Bones (Neurocranium)</div>
+      <p>Surround and protect the brain:</p>
+      <ul>
+        <li><strong>Frontal bone</strong> — forms the forehead and superior orbital margin</li>
+        <li><strong>Parietal bones (×2)</strong> — form the roof and sides of the cranium</li>
+        <li><strong>Temporal bones (×2)</strong> — house the middle and inner ear; contain the stylomastoid foramen (CN VII exit)</li>
+        <li><strong>Occipital bone</strong> — contains the foramen magnum (brainstem/spinal cord exit)</li>
+        <li><strong>Sphenoid bone</strong> — "keystone" of the skull base; contains sella turcica (holds pituitary gland)</li>
+        <li><strong>Ethmoid bone</strong> — contributes to the nasal cavity and medial orbital wall</li>
+      </ul>
+    </div>
+    <div class="card anatomy">
+      <div class="card-label">Facial Bones (Viscerocranium)</div>
+      <p>Surround the openings of the airway and digestive tract:</p>
+      <ul>
+        <li><strong>Nasal bones (×2)</strong> — bridge of the nose</li>
+        <li><strong>Lacrimal bones (×2)</strong> — medial wall of orbit; lacrimal sac</li>
+        <li><strong>Zygomatic bones (×2)</strong> — cheekbones</li>
+        <li><strong>Palatine bones (×2)</strong> — posterior hard palate</li>
+        <li><strong>Maxillae (×2)</strong> — upper jaw, floor of orbit</li>
+        <li><strong>Mandible</strong> — lower jaw; the <em>only movable bone</em> of the skull</li>
+        <li><strong>Vomer</strong> — nasal septum</li>
+        <li><strong>Inferior nasal conchae (×2)</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Key Foramina of the Skull</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Foramen</th><th>Transmitted Structure</th></tr></thead>
+      <tbody>
+        <tr><td>Foramen Magnum</td><td>Brainstem/spinal cord, vertebral arteries, CN XI (ascending part)</td></tr>
+        <tr><td>Foramen Ovale</td><td><strong>CN V3 (Mandibular division of trigeminal)</strong></td></tr>
+        <tr><td>Foramen Rotundum</td><td><strong>CN V2 (Maxillary division of trigeminal)</strong></td></tr>
+        <tr><td>Foramen Spinosum</td><td><strong>Middle Meningeal Artery</strong> (relevant to EDH!)</td></tr>
+        <tr><td>Stylomastoid Foramen</td><td><strong>CN VII (Facial nerve)</strong></td></tr>
+        <tr><td>Jugular Foramen</td><td>CN IX, X, XI; Internal Jugular Vein</td></tr>
+        <tr><td>Hypoglossal Canal</td><td>CN XII (Hypoglossal)</td></tr>
+        <tr><td>Internal Acoustic Meatus</td><td>CN VII, CN VIII (Vestibulocochlear)</td></tr>
+        <tr><td>Superior Orbital Fissure</td><td>CN III, IV, V1, VI; Ophthalmic veins</td></tr>
+        <tr><td>Optic Canal</td><td>CN II (Optic nerve), Ophthalmic artery</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="exam-box">
+    <div class="exam-label">🎯 Clinical: Skull Fractures</div>
+    <ul>
+      <li><strong>Pterion</strong> = thinnest part of the skull (junction of frontal, parietal, temporal, sphenoid). A blow here can rupture the <strong>Middle Meningeal Artery</strong> → <strong>Epidural (Extradural) Haematoma</strong>.</li>
+      <li><strong>Depressed skull fractures</strong> — bone fragments pushed inward, risking dural tear and brain injury.</li>
+      <li><strong>Base of skull fracture signs:</strong> Raccoon eyes (periorbital ecchymosis), Battle's sign (mastoid ecchymosis), CSF rhinorrhoea or otorrhoea.</li>
+      <li><strong>Le Fort fractures (I, II, III)</strong> — classified mid-face fractures from high-impact trauma.</li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <div class="quiz-header"><h2>Section 2 Quiz</h2><button class="btn btn-gold" onclick="showAnswers(this)">Show All Answers</button></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q1</div><div class="mcq-question">Which layer of the scalp is the 'dangerous layer' where infections spread widely?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Skin</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Subcutaneous connective tissue</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> Loose areolar tissue</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Pericranium</button></div><div class="explanation"><strong>Answer: C.</strong> The loose areolar tissue allows infections and hematomas to spread freely across the entire calvaria.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q2</div><div class="mcq-question">Which foramen transmits the middle meningeal artery?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Foramen ovale</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Foramen spinosum</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Foramen rotundum</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Foramen magnum</button></div><div class="explanation"><strong>Answer: B.</strong> The middle meningeal artery enters the skull through the foramen spinosum. Its rupture at the pterion causes epidural haematoma.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q3</div><div class="mcq-question">Which is the only movable bone of the skull?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Maxilla</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Mandible</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Temporal bone</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Zygomatic bone</button></div><div class="explanation"><strong>Answer: B.</strong> The mandible is the only movable bone of the skull. It articulates with the temporal bone at the TMJ.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     S3: MUSCLES OF THE HEAD
+     ═══════════════════════════════════ -->
+<div class="section" id="s3">
+  <div class="section-badge">Module 3</div>
+  <div class="section-title">Muscles of the Head</div>
+  <div class="section-subtitle">Facial expression and mastication — two distinct muscle groups</div>
+
+  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">The muscles of the head fall into two major groups, and understanding the difference between them is crucial. The <strong>muscles of facial expression</strong> (from the 2nd pharyngeal arch, supplied by CN VII) are unique in all of anatomy because they insert directly into the <em>skin</em> — which is why they can produce fine movements like smiling, frowning, and blinking. The <strong>muscles of mastication</strong> (from the 1st pharyngeal arch, supplied by CN V3) are responsible for chewing — they move the mandible at the TMJ. There are only 4 of them, but you must know each one's specific action.</p>
+
+  <div class="card-row">
+    <div class="card anatomy">
+      <div class="card-label">Muscles of Facial Expression</div>
+      <ul>
+        <li><strong>Origin:</strong> 2nd pharyngeal arch</li>
+        <li><strong>Unique feature:</strong> They insert into the <em>skin</em> rather than bone — this is why they produce facial movements (smiling, frowning, etc.)</li>
+        <li><strong>Innervation:</strong> ALL supplied by <strong>CN VII (Facial nerve)</strong></li>
+        <li><strong>Examples:</strong> Orbicularis oculi (closes eye), orbicularis oris (closes mouth), frontalis (raises eyebrows), buccinator (blowing/sucking), platysma (neck skin)</li>
+        <li><strong>Clinical:</strong> Bell's palsy = lower motor neuron lesion of CN VII → drooping of entire half of face including forehead. Upper motor neuron lesion → forehead sparing (because forehead receives bilateral UMN innervation).</li>
+      </ul>
+    </div>
+    <div class="card anatomy">
+      <div class="card-label">Muscles of Mastication</div>
+      <p>There are <strong>4 muscles of mastication</strong>, all from the 1st pharyngeal arch:</p>
+      <ul>
+        <li><strong>Masseter:</strong> The strongest muscle in the body for its size. Elevates (closes) jaw. Superficial fibers from zygomatic arch to mandibular angle.</li>
+        <li><strong>Temporalis:</strong> Fan-shaped muscle from temporal fossa. Anterior fibers elevate jaw; <em>posterior fibers retract</em> the mandible. Only muscle that retracts!</li>
+        <li><strong>Medial Pterygoid:</strong> Deep to mandible. Elevates jaw and assists in lateral (side-to-side) movement.</li>
+        <li><strong>Lateral Pterygoid:</strong> Two heads (superior & inferior). <em>Protracts</em> the mandible and assists depression (opening) and lateral movement.</li>
+      </ul>
+      <p style="margin-top:12px"><strong>All innervated by CN V3</strong> (mandibular division of trigeminal nerve).</p>
+    </div>
+  </div>
+
+  <div class="quiz-section">
+    <div class="quiz-header"><h2>Section 3 Quiz</h2><button class="btn btn-gold" onclick="showAnswers(this)">Show All Answers</button></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q1</div><div class="mcq-question">Which is the strongest of the muscles of mastication?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Temporalis</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Medial pterygoid</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> Masseter</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Lateral pterygoid</button></div><div class="explanation"><strong>Answer: C.</strong> The masseter is described as the strongest muscle in the body for its size. It is the primary jaw elevator.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q2</div><div class="mcq-question">What is unique about facial expression muscles compared to all other skeletal muscles?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> They are smooth muscle</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> They insert into skin rather than bone</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> They are innervated by CN V</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> They originate from the 3rd pharyngeal arch</button></div><div class="explanation"><strong>Answer: B.</strong> Muscles of facial expression insert directly into the dermis (skin), allowing them to produce fine facial movements and expressions.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q3</div><div class="mcq-question">Which muscle is primarily responsible for protrusion of the mandible?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Temporalis</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Masseter</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> Lateral pterygoid</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Digastric</button></div><div class="explanation"><strong>Answer: C.</strong> The lateral pterygoid is the main protractor of the mandible and also assists with depression (opening).</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     S4: TMJ & JOINTS
+     ═══════════════════════════════════ -->
+<div class="section" id="s4">
+  <div class="section-badge">Module 4</div>
+  <div class="section-title">TMJ &amp; Joints of the Head</div>
+  <div class="section-subtitle">The temporomandibular joint, sutures, and craniovertebral joints</div>
+
+  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">The joints of the head and neck are surprisingly diverse. Most skull bones are joined by <strong>sutures</strong> — immovable fibrous joints. But the mandible connects to the skull via the <strong>temporomandibular joint (TMJ)</strong>, which is the <em>only synovial joint</em> of the entire skull. It is a sophisticated modified hinge with an articular disc that allows both rotation and translation, enabling complex chewing movements. At the base of the skull, the <strong>craniovertebral joints</strong> (atlas-occipital and atlas-axis) allow us to nod and shake our heads.</p>
+
+  <div class="card-row">
+    <div class="card anatomy full">
+      <div class="card-label">The Temporomandibular Joint (TMJ)</div>
+      <ul>
+        <li><strong>Classification:</strong> Synovial <em>condylar (modified hinge)</em> joint — the <strong>only synovial joint of the skull</strong>.</li>
+        <li><strong>Articular Surfaces:</strong> Head/condyle of the mandible articulates with the mandibular (glenoid) fossa of the temporal bone.</li>
+        <li><strong>Articular Disc:</strong> A fibrocartilaginous disc divides the joint into upper and lower compartments. The upper compartment allows translational (sliding) movements; the lower allows rotational (hinge) movements.</li>
+        <li><strong>Sensory Nerve Supply:</strong> Auriculotemporal nerve (branch of CN V3).</li>
+        <li><strong>Ligaments:</strong> Lateral (temporomandibular) ligament (strongest), sphenomandibular ligament, stylomandibular ligament.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>TMJ Movement</th><th>Muscles Responsible</th><th>Compartment</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Elevation (closing)</strong></td><td>Masseter, Temporalis, Medial Pterygoid</td><td>Lower (rotation)</td></tr>
+        <tr><td><strong>Depression (opening)</strong></td><td>Lateral Pterygoid, Digastric, Mylohyoid, Geniohyoid (+ gravity)</td><td>Both (rotation + translation)</td></tr>
+        <tr><td><strong>Protraction (protrusion)</strong></td><td>Lateral Pterygoid, Medial Pterygoid</td><td>Upper (translation)</td></tr>
+        <tr><td><strong>Retraction</strong></td><td>Temporalis (posterior fibers)</td><td>Upper (translation)</td></tr>
+        <tr><td><strong>Lateral excursion</strong></td><td>Contralateral pterygoid muscles</td><td>Both</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Other Joints of the Head &amp; Neck</h2>
+  <div class="card-row">
+    <div class="card anatomy">
+      <div class="card-label">Skull Sutures</div>
+      <ul>
+        <li><strong>Coronal suture:</strong> Frontal + Parietal</li>
+        <li><strong>Sagittal suture:</strong> Between 2 Parietal bones</li>
+        <li><strong>Lambdoid suture:</strong> Parietal + Occipital</li>
+        <li>All are <em>fibrous joints</em> (synarthrosis) — immovable after fusion in adulthood.</li>
+        <li><strong>Fontanelles</strong> (in infants): anterior (bregma) and posterior (lambda) — permit moulding during birth; allow brain growth.</li>
+      </ul>
+    </div>
+    <div class="card anatomy">
+      <div class="card-label">Craniovertebral Joints</div>
+      <ul>
+        <li><strong>Atlanto-occipital (C0-C1):</strong> Synovial condyloid → allows <em>flexion/extension</em> (nodding "YES").</li>
+        <li><strong>Atlanto-axial (C1-C2):</strong> Synovial pivot → allows <em>rotation</em> (shaking head "NO"). The odontoid process (dens) of C2 acts as the pivot.</li>
+        <li><strong>Intervertebral discs (C2-C7):</strong> Fibrocartilaginous symphysis joints.</li>
+        <li><strong>Facet joints:</strong> Synovial gliding (plane) joints.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exam-box">
+    <div class="exam-label">🎯 Clinical: TMJ Dislocation</div>
+    <ul>
+      <li><strong>Mechanism:</strong> Wide yawn or direct blow → mandibular condyle slips anteriorly out of the glenoid fossa (over the articular eminence).</li>
+      <li><strong>Presentation:</strong> Inability to close the jaw, pain anterior to the ear, malocclusion.</li>
+      <li><strong>Reduction:</strong> Downward and posterior pressure on the mandible (Hippocratic method).</li>
+      <li><strong>Jaw deviation on opening</strong> = problem on the <em>same side</em> it deviates to (ipsilateral disc or muscle dysfunction).</li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <div class="quiz-header"><h2>Section 4 Quiz</h2><button class="btn btn-gold" onclick="showAnswers(this)">Show All Answers</button></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q1</div><div class="mcq-question">The TMJ is classified as which type of joint?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Fibrous (suture)</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Fibrocartilaginous (symphysis)</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> Synovial condylar joint</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Cartilaginous (synchondrosis)</button></div><div class="explanation"><strong>Answer: C.</strong> The TMJ is a synovial condylar (modified hinge) joint — the only synovial joint in the skull.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q2</div><div class="mcq-question">Which joint allows rotation (shaking head 'no')?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Atlanto-occipital (C0-C1)</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Atlanto-axial (C1-C2)</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> C2-C3 intervertebral</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> TMJ</button></div><div class="explanation"><strong>Answer: B.</strong> The atlanto-axial (C1-C2) is a synovial pivot joint that allows rotation around the dens of C2.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     S5: NECK TRIANGLES
+     ═══════════════════════════════════ -->
+<div class="section" id="s5">
+  <div class="section-badge">Module 5</div>
+  <div class="section-title">Neck Regions &amp; Muscles</div>
+  <div class="section-subtitle">Triangles, cervical vertebrae, and key muscles</div>
+
+  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">The neck is a compact anatomical region containing vital structures — the airway, major blood vessels (carotid arteries, jugular veins), nerves, the oesophagus, and the spinal cord — all packed into a relatively small space. To organise this complexity, anatomists divide the neck into <strong>triangles</strong> using key muscles as boundaries. The <strong>sternocleidomastoid (SCM)</strong> is the defining landmark — it splits the neck into an <strong>anterior triangle</strong> (containing the carotid vessels and thyroid) and a <strong>posterior triangle</strong> (containing the brachial plexus and subclavian vessels). The bony framework is provided by the <strong>7 cervical vertebrae</strong>.</p>
+
+  <div class="img-wrap">
+    <div class="img-title">Triangles of the Neck</div>
+    <img src="img_neck_triangles.png" alt="Anterior and posterior triangles of the neck divided by SCM">
+    <div class="img-caption">Figure 5.1 — The sternocleidomastoid (SCM) divides the neck into anterior and posterior triangles, each with sub-divisions.</div>
+  </div>
+
+  <div class="card-row">
+    <div class="card anatomy">
+      <div class="card-label">Anterior Triangle (subdivisions)</div>
+      <ul>
+        <li><strong>Submental triangle:</strong> Bounded by anterior bellies of digastric and hyoid bone. Contains: submental lymph nodes.</li>
+        <li><strong>Digastric (submandibular) triangle:</strong> Contains submandibular gland, facial artery & vein, hypoglossal nerve (CN XII).</li>
+        <li><strong>Carotid triangle:</strong> Contains common carotid bifurcation (at C4), internal & external carotid arteries, internal jugular vein, CN X, CN XII.</li>
+        <li><strong>Muscular triangle:</strong> Contains thyroid gland, infrahyoid (strap) muscles, trachea, oesophagus.</li>
+      </ul>
+    </div>
+    <div class="card anatomy">
+      <div class="card-label">Posterior Triangle (subdivisions)</div>
+      <ul>
+        <li>Bounded by SCM (anterior), trapezius (posterior), clavicle (inferior).</li>
+        <li><strong>Occipital triangle:</strong> Contains accessory nerve (CN XI), cutaneous branches of cervical plexus.</li>
+        <li><strong>Supraclavicular (subclavian) triangle:</strong> Contains subclavian artery (3rd part), brachial plexus trunks.</li>
+        <li>Floor: splenius capitis, levator scapulae, and scalene muscles.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Cervical Vertebrae</h2>
+  <div class="card-row">
+    <div class="card anatomy full">
+      <div class="card-label">7 Cervical Vertebrae</div>
+      <ul>
+        <li>There are <strong>7 cervical vertebrae (C1-C7)</strong> providing mobility and spinal cord protection.</li>
+        <li><strong>C1 (Atlas):</strong> Ring-shaped, <em>no body</em>, no spinous process. Supports the skull.</li>
+        <li><strong>C2 (Axis):</strong> Has the <em>dens (odontoid process)</em> which the atlas pivots around for head rotation.</li>
+        <li><strong>C7 (Vertebra Prominens):</strong> Long palpable spinous process — used as surface landmark.</li>
+        <li>All cervical vertebrae have <strong>transverse foramina</strong> (transmit vertebral arteries from C6 upward).</li>
+        <li><strong>Intervertebral discs</strong> are <em>symphysis (fibrocartilaginous)</em> joints.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quiz-section">
+    <div class="quiz-header"><h2>Section 5 Quiz</h2><button class="btn btn-gold" onclick="showAnswers(this)">Show All Answers</button></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q1</div><div class="mcq-question">The neck is divided into anterior and posterior triangles by which muscle?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Trapezius</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Sternocleidomastoid</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Omohyoid</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Digastric</button></div><div class="explanation"><strong>Answer: B.</strong> The SCM is the key landmark muscle that divides the entire neck into the anterior triangle (in front) and posterior triangle (behind).</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q2</div><div class="mcq-question">How many cervical vertebrae are there?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> 5</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> 6</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> 7</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> 8</button></div><div class="explanation"><strong>Answer: C.</strong> There are 7 cervical vertebrae (C1–C7).</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q3</div><div class="mcq-question">The intervertebral discs of the cervical spine are classified as which type of joint?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Synovial pivot</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Fibrous</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> Fibrocartilaginous symphysis</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Synchondrosis</button></div><div class="explanation"><strong>Answer: C.</strong> Intervertebral discs are fibrocartilaginous symphysis joints — primarily weight-bearing.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     S6: CRANIAL NERVES & VESSELS
+     ═══════════════════════════════════ -->
+<div class="section" id="s6">
+  <div class="section-badge">Module 6</div>
+  <div class="section-title">Cranial Nerves &amp; Blood Vessels</div>
+  <div class="section-subtitle">CN V, CN VII, arterial supply, and venous drainage</div>
+
+  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">Two cranial nerves dominate head and neck anatomy: the <strong>Trigeminal (CN V)</strong> and the <strong>Facial (CN VII)</strong>. Think of CN V as the "sensory master" — it provides sensation to the entire face through three divisions (V1, V2, V3). CN VII is the "motor master" — it controls all the muscles of facial expression. The head receives its blood supply from the <strong>common carotid artery</strong>, which bifurcates into the <strong>external carotid</strong> (supplying the face and scalp) and the <strong>internal carotid</strong> (supplying the brain). A key exam trap: the internal carotid has <em>no branches</em> in the neck.</p>
+
+  <h2>The Trigeminal Nerve (CN V) — Sensory Master</h2>
+  <div class="card-row">
+    <div class="card neuro full">
+      <div class="card-label">CN V — Three Divisions</div>
+      <p>The trigeminal nerve provides <strong>sensory supply to the entire face</strong> and <strong>motor supply only via V3</strong> (to muscles of mastication). It originates at the <strong>pontomedullary junction</strong>.</p>
+      <ul>
+        <li><strong>V1 (Ophthalmic):</strong> Sensory to forehead, upper eyelid, cornea, bridge of nose. Exits via: <em>Superior Orbital Fissure</em>.</li>
+        <li><strong>V2 (Maxillary):</strong> Sensory to cheek, upper lip, upper teeth, palate, nasal cavity. Exits via: <em>Foramen Rotundum</em>.</li>
+        <li><strong>V3 (Mandibular):</strong> Sensory to lower face, lower teeth, tongue (anterior 2/3 sensation), ear. Motor to muscles of mastication. Exits via: <em>Foramen Ovale</em>. <strong>The only division with motor fibers.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>The Facial Nerve (CN VII) — Motor Master</h2>
+  <div class="card-row">
+    <div class="card neuro full">
+      <div class="card-label">CN VII — Course & Branches</div>
+      <ul>
+        <li><strong>Origin:</strong> Pontomedullary junction (cerebellopontine angle).</li>
+        <li><strong>Intracranial course:</strong> Enters the internal acoustic meatus → runs through the facial canal in the temporal bone → exits through the <strong>stylomastoid foramen</strong>.</li>
+        <li><strong>Extracranial:</strong> Passes through the parotid gland → splits into 5 terminal branches.</li>
+        <li><strong>Functions:</strong> Motor to muscles of facial expression, taste to anterior 2/3 of tongue (via chorda tympani), parasympathetic to submandibular, sublingual, and lacrimal glands.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mnemonic">
+    <div class="mnemonic-label">🧠 CN VII Branches — "Zambia Boys Make Toy Cars"</div>
+    <ul>
+      <li><strong>Z</strong>ambia → <strong>Z</strong>ygomatic branch (closes eyelids)</li>
+      <li><strong>B</strong>oys → <strong>B</strong>uccal branch (blowing, sucking)</li>
+      <li><strong>M</strong>ake → <strong>M</strong>arginal Mandibular branch (lower lip movement)</li>
+      <li><strong>T</strong>oy → <strong>T</strong>emporal branch (raises eyebrows, wrinkles forehead)</li>
+      <li><strong>C</strong>ars → <strong>C</strong>ervical branch (platysma)</li>
+    </ul>
+  </div>
+
+  <h2>Arterial Supply of the Head</h2>
+  <div class="card-row">
+    <div class="card anatomy">
+      <div class="card-label">External Carotid Artery (ECA)</div>
+      <p>Supplies the face and superficial structures. Four key branches for head & neck:</p>
+      <ul>
+        <li><strong>Lingual artery</strong> — tongue and floor of mouth</li>
+        <li><strong>Facial artery</strong> — face (crosses mandible at anterior border of masseter — palpable here)</li>
+        <li><strong>Maxillary artery</strong> — deep face, pterygopalatine fossa. Gives rise to the <strong>Middle Meningeal Artery</strong> (enters skull via foramen spinosum)</li>
+        <li><strong>Superficial Temporal artery</strong> — scalp (palpable anterior to the ear)</li>
+      </ul>
+    </div>
+    <div class="card anatomy">
+      <div class="card-label">Internal Carotid Artery (ICA)</div>
+      <ul>
+        <li>Supplies the <strong>brain and orbit</strong>.</li>
+        <li><strong>Has NO branches in the neck</strong> — this is a classic exam trap.</li>
+        <li>Enters the skull via the carotid canal in the temporal bone.</li>
+        <li>Gives rise to: ophthalmic artery, middle cerebral artery, anterior cerebral artery.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quiz-section">
+    <div class="quiz-header"><h2>Section 6 Quiz</h2><button class="btn btn-gold" onclick="showAnswers(this)">Show All Answers</button></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q1</div><div class="mcq-question">The facial nerve exits the skull through which foramen?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Foramen ovale</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Foramen rotundum</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> Stylomastoid foramen</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Jugular foramen</button></div><div class="explanation"><strong>Answer: C.</strong> CN VII exits via the stylomastoid foramen, then passes through the parotid gland before dividing into its 5 terminal branches.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q2</div><div class="mcq-question">Which branch of the trigeminal nerve exits through foramen ovale?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> V1 (Ophthalmic)</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> V2 (Maxillary)</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> V3 (Mandibular)</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> All three divisions</button></div><div class="explanation"><strong>Answer: C.</strong> V3 exits through foramen ovale. V2 through foramen rotundum. V1 through the superior orbital fissure.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q3</div><div class="mcq-question">Which artery is the primary supplier of the face?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Lingual artery</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Facial artery</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Internal carotid artery</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Ophthalmic artery</button></div><div class="explanation"><strong>Answer: B.</strong> The facial artery (branch of ECA) is the primary supplier of the face.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     S7: BRAIN EXTERNAL ANATOMY
+     ═══════════════════════════════════ -->
+<div class="section" id="s7">
+  <div class="section-badge">Module 7</div>
+  <div class="section-title">Brain External Anatomy</div>
+  <div class="section-subtitle">Lobes, sulci, cerebellum, brainstem, and meninges</div>
+
+  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">The brain is the most complex organ in the body — the command centre for everything we do, think, and feel. It weighs about <strong>1.0–1.5 kg</strong> in adults and is divided into the <strong>cerebrum</strong> (the large, wrinkled mass forming most of what you see), the <strong>cerebellum</strong> (the "little brain" at the back responsible for coordination), and the <strong>brainstem</strong> (midbrain, pons, medulla — connecting the brain to the spinal cord and controlling vital functions like breathing). The cerebrum is divided into two hemispheres by the <strong>longitudinal fissure</strong>, and each hemisphere is further divided into <strong>4 lobes</strong> by prominent grooves called <strong>sulci</strong>. These sulci are your anatomical landmarks — they tell you <em>exactly</em> where one functional area ends and another begins.</p>
+
+  <div class="img-wrap">
+    <div class="img-title">Lateral View of the Brain — Lobes & Sulci</div>
+    <img src="img_brain_lateral.png" alt="Lateral view of the brain showing frontal, parietal, temporal, and occipital lobes">
+    <div class="img-caption">Figure 7.1 — Lateral surface of the brain showing the four lobes, central sulcus, lateral sulcus, cerebellum, and brainstem.</div>
+  </div>
+
+  <h2>The Sulci — Lines that Separate the Lobes</h2>
+  <div class="card-row">
+    <div class="card anatomy full">
+      <div class="card-label">Key Boundary Sulci & Fissures</div>
+      <p>The brain's surface is folded into ridges (<strong>gyri</strong>) and grooves (<strong>sulci</strong>). Three major sulci/fissures act as the boundaries between lobes:</p>
+      <ul>
+        <li><strong>Central Sulcus (of Rolando):</strong> Runs vertically down the lateral surface. This is the <em>border between the Frontal Lobe (anterior) and the Parietal Lobe (posterior)</em>. The gyrus immediately in front of it is the <strong>precentral gyrus (motor cortex)</strong>; the gyrus immediately behind it is the <strong>postcentral gyrus (sensory cortex)</strong>. This is probably the single most important landmark on the brain.</li>
+        <li><strong>Lateral Sulcus (of Sylvius / Sylvian Fissure):</strong> Runs horizontally along the side of the brain. It separates the <em>Frontal and Parietal Lobes (above) from the Temporal Lobe (below)</em>. The middle cerebral artery runs within this sulcus.</li>
+        <li><strong>Parieto-occipital Sulcus:</strong> Visible mainly on the medial surface. It marks the <em>boundary between the Parietal Lobe (anterior) and the Occipital Lobe (posterior)</em>.</li>
+        <li><strong>Longitudinal Fissure:</strong> The deep midline groove that <em>separates the left and right cerebral hemispheres</em>. It contains the falx cerebri (dural fold) and the anterior cerebral artery.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exam-box">
+    <div class="exam-label">🎯 Exam Tip: Sulci Boundaries Summary</div>
+    <ul>
+      <li><strong>Central sulcus</strong> = Frontal ↔ Parietal (motor in front, sensory behind)</li>
+      <li><strong>Lateral sulcus</strong> = Frontal/Parietal ↔ Temporal</li>
+      <li><strong>Parieto-occipital sulcus</strong> = Parietal ↔ Occipital</li>
+      <li><strong>Longitudinal fissure</strong> = Left hemisphere ↔ Right hemisphere</li>
+    </ul>
+    <p>Remember: <strong>"Central separates Motor from Sensory, Lateral separates upper from Temporal."</strong></p>
+  </div>
+
+  <h2>Lobes of the Brain</h2>
+  <div class="card-row">
+    <div class="card neuro">
+      <div class="card-label">Frontal Lobe</div>
+      <ul>
+        <li><strong>Location:</strong> Anterior to central sulcus, superior to lateral sulcus</li>
+        <li><strong>Motor cortex (precentral gyrus):</strong> Primary motor area — controls voluntary movement of opposite side of body</li>
+        <li><strong>Prefrontal cortex:</strong> Planning, personality, judgement, executive function</li>
+        <li><strong>Broca's area</strong> (inferior frontal gyrus, dominant hemisphere): <em>Motor speech production</em>. Damage → Broca's aphasia = non-fluent, understands but can't speak.</li>
+      </ul>
+    </div>
+    <div class="card neuro">
+      <div class="card-label">Parietal Lobe</div>
+      <ul>
+        <li><strong>Location:</strong> Posterior to central sulcus, superior to lateral sulcus</li>
+        <li><strong>Sensory cortex (postcentral gyrus):</strong> Primary somatosensory area — receives touch, pressure, proprioception, pain, temperature from opposite side</li>
+        <li><strong>Sensory association areas:</strong> Integration of sensory information</li>
+        <li>Damage → neglect syndrome (especially right side), deficits in spatial awareness</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card-row">
+    <div class="card neuro">
+      <div class="card-label">Temporal Lobe</div>
+      <ul>
+        <li><strong>Location:</strong> Inferior to lateral sulcus</li>
+        <li><strong>Auditory cortex:</strong> Processing of sound/hearing</li>
+        <li><strong>Wernicke's area</strong> (superior temporal gyrus, dominant hemisphere): <em>Speech comprehension</em>. Damage → Wernicke's aphasia = can speak fluently but speech is meaningless.</li>
+        <li><strong>Hippocampus:</strong> Memory formation (deep/medial temporal lobe)</li>
+        <li><strong>Amygdala:</strong> Emotions, fear responses</li>
+      </ul>
+    </div>
+    <div class="card neuro">
+      <div class="card-label">Occipital Lobe</div>
+      <ul>
+        <li><strong>Location:</strong> Most posterior part of the brain</li>
+        <li><strong>Visual cortex:</strong> Processing of vision. Information arrives from the optic radiation.</li>
+        <li>Damage → cortical blindness (can have intact pupil reflexes)</li>
+        <li>Supplied primarily by posterior cerebral artery</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Cerebellum &amp; Brainstem</h2>
+  <div class="card-row">
+    <div class="card neuro">
+      <div class="card-label">Cerebellum</div>
+      <ul>
+        <li><strong>Location:</strong> Posterior fossa, below tentorium cerebelli</li>
+        <li><strong>Function:</strong> Coordination, balance, posture, motor learning, fine motor control</li>
+        <li><strong>Key cells:</strong> <strong>Purkinje cells</strong> — the main (output) cells of the cerebellum</li>
+        <li>Damage → ataxia (loss of coordination), intention tremor, nystagmus, past-pointing</li>
+      </ul>
+    </div>
+    <div class="card neuro">
+      <div class="card-label">Brainstem</div>
+      <ul>
+        <li><strong>Midbrain:</strong> Contains red nucleus, substantia nigra (dopamine, Parkinson's), CN III & IV nuclei</li>
+        <li><strong>Pons:</strong> Relay between cerebellum and cortex. Contains CN V, VI, VII, VIII nuclei</li>
+        <li><strong>Medulla oblongata:</strong> Vital centers (cardiac, respiratory, vasomotor). Contains CN IX, X, XI, XII nuclei. <em>Pyramidal decussation here</em> — where motor tracts cross sides.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Meninges</h2>
+  <div class="card-row">
+    <div class="card anatomy full">
+      <div class="card-label">Three Meningeal Layers</div>
+      <ul>
+        <li><strong>Dura mater (outermost):</strong> Tough, thick, fibrous. Folds: falx cerebri (between hemispheres), tentorium cerebelli (between cerebrum and cerebellum). Contains dural venous sinuses (superior sagittal sinus, transverse sinus, etc.).</li>
+        <li><strong>Arachnoid mater (middle):</strong> Spider web-like membrane. <em>Arachnoid granulations</em> absorb CSF back into the dural venous sinuses.</li>
+        <li><strong>Pia mater (innermost):</strong> Delicate, vascular membrane that closely follows every contour of the brain surface (into sulci and over gyri).</li>
+        <li><strong>Subarachnoid space</strong> (between arachnoid and pia) contains CSF and cerebral arteries. Subarachnoid haemorrhage = "thunderclap headache".</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quiz-section">
+    <div class="quiz-header"><h2>Section 7 Quiz</h2><button class="btn btn-gold" onclick="showAnswers(this)">Show All Answers</button></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q1</div><div class="mcq-question">The adult brain weighs about:</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> 2.0 to 2.5 kg</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> 1.0 to 1.5 kg</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> 2.5 to 3.0 kg</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> 0.5 to 1.0 kg</button></div><div class="explanation"><strong>Answer: B.</strong> The adult brain weighs approximately 1.0 to 1.5 kg.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q2</div><div class="mcq-question">The lateral sulcus of Sylvius separates which lobes?</div><div class="mcq-options"><button class="mcq-option" data-correct="true"><span class="opt-letter">A</span> Frontal/Parietal from Temporal</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Frontal from Parietal</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Parietal from Occipital</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Occipital from Temporal</button></div><div class="explanation"><strong>Answer: A.</strong> The lateral sulcus separates the frontal and parietal lobes (above) from the temporal lobe (below). The central sulcus separates frontal from parietal.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q3</div><div class="mcq-question">The main output cells of the cerebellum are called:</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Pyramidal cells</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Purkinje cells</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Ependymal cells</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Astrocytes</button></div><div class="explanation"><strong>Answer: B.</strong> Purkinje cells are the largest and most characteristic cells of the cerebellum.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     S8: FUNCTIONAL BRAIN REGIONS
+     ═══════════════════════════════════ -->
+<div class="section" id="s8">
+  <div class="section-badge">Module 8</div>
+  <div class="section-title">Functional Brain Regions</div>
+  <div class="section-subtitle">Cortical areas, homunculus, speech centres, and the reticular formation</div>
+
+  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">Now that you know the lobes and their boundaries, the next question is: <em>what does each area actually do?</em> The brain is not a uniform mass — different patches of cortex are specialised for different functions. The <strong>motor cortex</strong> (precentral gyrus) controls movement, the <strong>sensory cortex</strong> (postcentral gyrus) processes touch and sensation, <strong>Broca’s area</strong> produces speech while <strong>Wernicke’s area</strong> comprehends it, and the <strong>visual cortex</strong> in the occipital lobe processes everything you see. Deep inside the brain, the <strong>basal ganglia</strong> fine-tune your movements (damage = Parkinson’s), and the <strong>reticular formation</strong> in the brainstem keeps you conscious. Knowing which area does what — and what happens when it fails — is the foundation of clinical neurology.</p>
+
+  <h2>Cortical Functional Areas</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Brain Area</th><th>Location</th><th>Function</th><th>Clinical Deficit</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Primary Motor Cortex</strong></td><td>Precentral gyrus (frontal lobe)</td><td>Voluntary movement of opposite side of body</td><td>Contralateral paralysis/weakness</td></tr>
+        <tr><td><strong>Primary Sensory Cortex</strong></td><td>Postcentral gyrus (parietal lobe)</td><td>Receives touch, pressure, pain, proprioception from opposite side</td><td>Contralateral numbness/tingling</td></tr>
+        <tr><td><strong>Broca's Area</strong></td><td>Inferior frontal gyrus (dominant hemisphere, usually left)</td><td><strong>Motor speech production</strong></td><td>Broca's aphasia — non-fluent, but comprehension intact. "Broken speech."</td></tr>
+        <tr><td><strong>Wernicke's Area</strong></td><td>Superior temporal gyrus (dominant hemisphere)</td><td><strong>Speech comprehension</strong></td><td>Wernicke's aphasia — fluent but nonsensical speech. Impaired comprehension.</td></tr>
+        <tr><td><strong>Primary Visual Cortex</strong></td><td>Occipital lobe (calcarine sulcus)</td><td>Vision processing</td><td>Cortical blindness (pupil reflexes intact)</td></tr>
+        <tr><td><strong>Primary Auditory Cortex</strong></td><td>Superior temporal gyrus</td><td>Hearing</td><td>Cortical deafness</td></tr>
+        <tr><td><strong>Prefrontal Cortex</strong></td><td>Anterior frontal lobe</td><td>Personality, judgement, planning, social behaviour</td><td>Personality changes, disinhibition (Phineas Gage case)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Deep Brain Structures</h2>
+  <div class="card-row">
+    <div class="card neuro">
+      <div class="card-label">Basal Ganglia (Basal Nuclei)</div>
+      <ul>
+        <li><strong>Components:</strong> Caudate nucleus, putamen, globus pallidus (together = lentiform nucleus + caudate = corpus striatum)</li>
+        <li><strong>Function:</strong> Modulates movement — initiating, regulating, and suppressing unwanted movements</li>
+        <li><strong>Clinical:</strong> Degeneration of dopamine neurons in the <em>substantia nigra</em> (which projects to the basal ganglia) → <strong>Parkinson's Disease</strong> (tremor, rigidity, bradykinesia)</li>
+        <li>Huntington's disease = degeneration of caudate nucleus</li>
+      </ul>
+    </div>
+    <div class="card neuro">
+      <div class="card-label">Other Key Structures</div>
+      <ul>
+        <li><strong>Thalamus:</strong> "Gateway to the cortex" — relays all sensory information (except olfaction) to the cortex</li>
+        <li><strong>Hypothalamus:</strong> Homeostasis master controller — temperature, hunger, thirst, circadian rhythm, hormone regulation (via pituitary)</li>
+        <li><strong>Hippocampus:</strong> Memory consolidation (short-term → long-term)</li>
+        <li><strong>Reticular Formation:</strong> Network of neurons in brainstem — controls <strong>consciousness and arousal</strong> (reticular activating system). Damage = coma.</li>
+        <li><strong>Red Nucleus:</strong> Located in the <strong>midbrain</strong> — involved in motor coordination</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Histology of the Cerebral Cortex</h2>
+  <div class="card-row">
+    <div class="card histo full">
+      <div class="card-label">6 Layers of the Neocortex</div>
+      <p>The cerebral cortex has <strong>6 histological layers</strong> (from superficial to deep):</p>
+      <ol>
+        <li><strong>Molecular layer</strong> — few cell bodies, mostly axons/dendrites</li>
+        <li><strong>External granular layer</strong> — small pyramidal and stellate cells</li>
+        <li><strong>External pyramidal layer</strong> — medium pyramidal cells (association fibers)</li>
+        <li><strong>Internal granular layer</strong> — stellate cells (receives thalamocortical input)</li>
+        <li><strong>Internal pyramidal layer</strong> — large pyramidal cells, including <strong>Betz cells</strong> (giant pyramidal cells of the primary motor cortex)</li>
+        <li><strong>Multiform (polymorphic) layer</strong> — various cell types (efferent to thalamus)</li>
+      </ol>
+      <p style="margin-top:12px"><strong>Key cell:</strong> Motor cells of the cerebral cortex are called <strong>pyramidal cells</strong>. The large ones in the motor cortex are <strong>Betz cells</strong>.</p>
+    </div>
+  </div>
+
+  <h2>Glial Cells of the CNS</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Cell Type</th><th>Function</th><th>Clinical Relevance</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Astrocytes</strong></td><td>Structural support, nutrient transport, repair, form the <strong>Blood-Brain Barrier (BBB)</strong> by covering blood vessel walls</td><td>Astrocytomas (gliomas)</td></tr>
+        <tr><td><strong>Oligodendrocytes</strong></td><td>Produce <strong>myelin sheath</strong> in the CNS (one can myelinate multiple axons)</td><td>Multiple sclerosis = demyelination</td></tr>
+        <tr><td><strong>Microglia</strong></td><td>Resident immune cells (phagocytosis) — the macrophages of the CNS</td><td>Activated in infection/inflammation</td></tr>
+        <tr><td><strong>Ependymal Cells</strong></td><td><strong>Line the ventricles</strong>, some have cilia to circulate CSF</td><td>Ependymomas (tumors)</td></tr>
+        <tr><td><strong>Schwann Cells</strong></td><td>Produce myelin in the PNS (one cell per one internode)</td><td>Guillain-Barré syndrome</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="quiz-section">
+    <div class="quiz-header"><h2>Section 8 Quiz</h2><button class="btn btn-gold" onclick="showAnswers(this)">Show All Answers</button></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q1</div><div class="mcq-question">The area responsible for motor speech in the brain is called:</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Wernicke's area</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Broca's area</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Primary auditory cortex</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Prefrontal cortex</button></div><div class="explanation"><strong>Answer: B.</strong> Broca's area (inferior frontal gyrus) is the motor speech area. Broca's = Broken speech.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q2</div><div class="mcq-question">The cells that cover blood vessels to create the blood-brain barrier are:</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Ependymal cells</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Astrocytes</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Oligodendrocytes</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Microglia</button></div><div class="explanation"><strong>Answer: B.</strong> Astrocyte foot processes surround blood vessels in the brain, forming a critical component of the blood-brain barrier.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q3</div><div class="mcq-question">The cerebral cortex has how many layers?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> 3</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> 5</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> 6</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> 9</button></div><div class="explanation"><strong>Answer: C.</strong> The neocortex has 6 distinct histological layers.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q4</div><div class="mcq-question">The Red Nucleus is found in which area of the brain?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Basal ganglia</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Cerebellum</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Diencephalon</button><button class="mcq-option" data-correct="true"><span class="opt-letter">D</span> Midbrain</button></div><div class="explanation"><strong>Answer: D.</strong> The red nucleus is located in the midbrain (tegmentum), playing a role in motor coordination.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q5</div><div class="mcq-question">The medical condition of the Basal Ganglia with depletion of Dopamine is:</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Multiple sclerosis</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Parkinson's disease</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Huntington's disease</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Alzheimer's disease</button></div><div class="explanation"><strong>Answer: B.</strong> Parkinson's disease results from degeneration of dopaminergic neurons in the substantia nigra which project to the basal ganglia, causing tremor, rigidity, and bradykinesia.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     S9: VENTRICLES & CSF
+     ═══════════════════════════════════ -->
+<div class="section" id="s9">
+  <div class="section-badge">Module 9</div>
+  <div class="section-title">Ventricles &amp; CSF Circulation</div>
+  <div class="section-subtitle">Fluid spaces, production, circulation, and hydrocephalus</div>
+
+  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">The brain floats in a bath of <strong>cerebrospinal fluid (CSF)</strong> — a clear, colourless liquid that cushions the brain, removes waste products, and maintains stable intracranial pressure. CSF is produced by the <strong>choroid plexus</strong> inside the ventricles (fluid-filled cavities within the brain), circulates through a series of chambers and channels, and is eventually reabsorbed into the bloodstream via <strong>arachnoid granulations</strong>. This system is elegantly balanced — but when the flow is blocked (e.g., at the narrow <strong>Aqueduct of Sylvius</strong>) or absorption fails, CSF accumulates and intracranial pressure rises. This is <strong>hydrocephalus</strong> — a condition you will absolutely see on your exam.</p>
+
+  <div class="img-wrap">
+    <div class="img-title">CSF Circulation & Ventricular System</div>
+    <img src="img_ventricles.png" alt="Ventricular system showing lateral ventricles, 3rd ventricle, aqueduct of Sylvius, 4th ventricle">
+    <div class="img-caption">Figure 9.1 — CSF is produced by the choroid plexus, flows through the ventricular system, and is reabsorbed by arachnoid granulations.</div>
+  </div>
+
+  <div class="card-row">
+    <div class="card anatomy full">
+      <div class="card-label">CSF Circulation Pathway</div>
+      <ol style="font-size:15px">
+        <li><strong>CSF is produced</strong> by the <strong>choroid plexus</strong> (modified ependymal cells) in the ventricles — mainly in the lateral ventricles.</li>
+        <li><strong>Lateral ventricles (×2)</strong> → flow through the <strong>Foramen of Monro (interventricular foramen)</strong></li>
+        <li><strong>Third ventricle</strong> (in the diencephalon, between the two thalami) → flow through the <strong>Aqueduct of Sylvius (cerebral aqueduct)</strong> in the midbrain</li>
+        <li><strong>Fourth ventricle</strong> (between cerebellum and pons/medulla) → exits via <strong>Foramen of Magendie</strong> (median aperture) and <strong>Foramina of Luschka</strong> (lateral apertures × 2) into the subarachnoid space</li>
+        <li>CSF circulates in the <strong>subarachnoid space</strong> around the brain and spinal cord</li>
+        <li><strong>CSF is reabsorbed</strong> by the <strong>arachnoid granulations</strong> into the dural venous sinuses (mainly the superior sagittal sinus) → returns to bloodstream</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="exam-box">
+    <div class="exam-label">🎯 Clinical: Hydrocephalus</div>
+    <p>Hydrocephalus = excessive accumulation of CSF in the ventricles → increased intracranial pressure.</p>
+    <ul>
+      <li><strong>Communicating:</strong> Problem with CSF absorption (e.g., arachnoid granulations blocked by post-meningitis scarring).</li>
+      <li><strong>Non-communicating (obstructive):</strong> Blockage within the ventricular system. Most common site: <strong>Aqueduct of Sylvius</strong> (the narrowest passage).</li>
+      <li><strong>In children:</strong> Head enlarges (sutures not yet fused), bulging fontanelle, frontal bossing, "sunset sign" eyes.</li>
+      <li><strong>In adults:</strong> Headache, vomiting, papilloedema, altered consciousness (sutures fused → can't expand → lethal).</li>
+      <li><strong>Treatment:</strong> Ventriculoperitoneal (VP) shunt or endoscopic third ventriculostomy.</li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <div class="quiz-header"><h2>Section 9 Quiz</h2><button class="btn btn-gold" onclick="showAnswers(this)">Show All Answers</button></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q1</div><div class="mcq-question">CSF is produced by which structure?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Arachnoid granulations</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Choroid plexus</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Ependymal cells alone</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Dura mater</button></div><div class="explanation"><strong>Answer: B.</strong> CSF is produced by the choroid plexus (which is made of specialized ependymal cells). Arachnoid granulations reabsorb CSF.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q2</div><div class="mcq-question">The Foramen of Magendie is the median opening of which ventricle?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Lateral ventricle</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Third ventricle</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> Fourth ventricle</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Aqueduct of Sylvius</button></div><div class="explanation"><strong>Answer: C.</strong> The Foramen of Magendie is the median aperture of the fourth ventricle, allowing CSF to flow into the subarachnoid space.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q3</div><div class="mcq-question">The cells lining the ventricles are called:</div><div class="mcq-options"><button class="mcq-option" data-correct="true"><span class="opt-letter">A</span> Ependymal cells</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Astrocytes</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Oligodendrocytes</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Schwann cells</button></div><div class="explanation"><strong>Answer: A.</strong> Ependymal cells line the ventricles and the central canal of the spinal cord.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     S10: INTERNAL BRAIN & WHITE MATTER
+     ═══════════════════════════════════ -->
+<div class="section" id="s10">
+  <div class="section-badge">Module 10</div>
+  <div class="section-title">Internal Brain &amp; White Matter</div>
+  <div class="section-subtitle">Internal capsule, white fiber tracts, and the corpus callosum</div>
+
+  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">When you cut the brain open, you see two types of tissue: <strong>grey matter</strong> (cell bodies, on the surface as cortex and deep as nuclei) and <strong>white matter</strong> (myelinated axon bundles connecting different brain regions). These white fiber tracts are the brain’s “wiring” — they come in three flavours: <strong>projection</strong> (connecting cortex to spinal cord), <strong>association</strong> (connecting areas within the same hemisphere), and <strong>commissural</strong> (connecting the two hemispheres). The most clinically important white matter structure is the <strong>internal capsule</strong> — a concentrated bottleneck of motor and sensory fibers. A small stroke here produces devastating contralateral paralysis because so many fibers pass through such a tiny space.</p>
+
+  <h2>White Matter Fiber Types</h2>
+  <div class="card-row">
+    <div class="card neuro full">
+      <div class="card-label">Three Types of White Fibers</div>
+      <ul>
+        <li><strong>Projection fibers:</strong> Connect cortex to subcortical structures (brainstem, spinal cord). Run vertically. The <strong>internal capsule</strong> is the main collection of projection fibers. Includes the <em>corticospinal tract</em> (motor) and <em>thalamocortical radiations</em> (sensory).</li>
+        <li><strong>Association fibers:</strong> Connect different areas <em>within the same hemisphere</em>. Examples: arcuate fasciculus (connects Broca's and Wernicke's areas), superior longitudinal fasciculus.</li>
+        <li><strong>Commissural fibers:</strong> Connect corresponding areas <em>between the two hemispheres</em>. The largest commissure is the <strong>corpus callosum</strong>. Others: anterior commissure, posterior commissure.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>The Internal Capsule</h2>
+  <div class="card-row">
+    <div class="card clinical full">
+      <div class="card-label">Internal Capsule — Anatomy & Clinical Importance</div>
+      <ul>
+        <li><strong>Shape:</strong> V-shaped or boomerang-shaped bundle of white matter, with an <strong>anterior limb</strong>, <strong>genu</strong>, and <strong>posterior limb</strong>.</li>
+        <li><strong>Location:</strong> Between the caudate (medially) and the lentiform nucleus (laterally).</li>
+        <li><strong>Posterior limb carries:</strong> The <em>corticospinal tract</em> (motor fibers from the motor cortex to the spinal cord). This is why a small stroke here causes devastating contralateral hemiplegia.</li>
+        <li><strong>Blood supply:</strong> <strong>Lenticulostriate arteries</strong> (branches of the middle cerebral artery). These are small end-arteries prone to rupture in hypertension → haemorrhagic stroke.</li>
+        <li><strong>Clinical significance:</strong> A small stroke or bleed in the internal capsule causes <em>contralateral hemiplegia</em> (weakness/paralysis of the opposite side) because so many motor fibers pass through such a small area — like a bottleneck.</li>
+        <li><strong>Why contralateral?</strong> The corticospinal tract crosses (decussates) at the pyramids of the medulla. So right internal capsule damage → left-sided weakness.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Brain Development (Embryology)</h2>
+  <div class="card-row">
+    <div class="card embryo full">
+      <div class="card-label">Primary Brain Vesicles → Adult Structures</div>
+      <ul>
+        <li><strong>Prosencephalon (Forebrain)</strong> → divides into:
+          <ul>
+            <li><strong>Telencephalon</strong> → cerebral hemispheres, basal ganglia, hippocampus</li>
+            <li><strong>Diencephalon</strong> → thalamus, hypothalamus, epithalamus (pineal gland)</li>
+          </ul>
+        </li>
+        <li><strong>Mesencephalon (Midbrain)</strong> → midbrain (unchanged). Contains cerebral peduncles, red nucleus, substantia nigra.</li>
+        <li><strong>Rhombencephalon (Hindbrain)</strong> → divides into:
+          <ul>
+            <li><strong>Metencephalon</strong> → pons + cerebellum</li>
+            <li><strong>Myelencephalon</strong> → medulla oblongata</li>
+          </ul>
+        </li>
+        <li><strong>Abnormality:</strong> Neural tube defects (e.g., anencephaly = failure of anterior neuropore to close; spina bifida = failure of posterior neuropore).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quiz-section">
+    <div class="quiz-header"><h2>Section 10 Quiz</h2><button class="btn btn-gold" onclick="showAnswers(this)">Show All Answers</button></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q1</div><div class="mcq-question">The white fibers in the brain include:</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Projection, association, and dissociation fibers</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Ascending and descending fibers</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> Projection, association, and commissural fibers</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> White and gray matter</button></div><div class="explanation"><strong>Answer: C.</strong> The three types of white fibers are projection (vertical, e.g. internal capsule), association (within hemisphere), and commissural (between hemispheres, e.g. corpus callosum).</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q2</div><div class="mcq-question">In the development of the brain, the Rhombencephalon becomes:</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Diencephalon</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Basal ganglia</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Midbrain</button><button class="mcq-option" data-correct="true"><span class="opt-letter">D</span> Hindbrain (pons, cerebellum, medulla)</button></div><div class="explanation"><strong>Answer: D.</strong> Rhombencephalon = Hindbrain → divides into metencephalon (pons + cerebellum) and myelencephalon (medulla).</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     S11: BLOOD SUPPLY & CIRCLE OF WILLIS
+     ═══════════════════════════════════ -->
+<div class="section" id="s11">
+  <div class="section-badge">Module 11</div>
+  <div class="section-title">Blood Supply &amp; Circle of Willis</div>
+  <div class="section-subtitle">Arterial supply, venous drainage, and stroke pathophysiology</div>
+
+  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">The brain consumes about <strong>20% of the body’s blood supply</strong> despite making up only 2% of body weight — it is metabolically ravenous and has no energy reserves. If blood flow stops for even a few minutes, neurons die. This is why understanding the <strong>Circle of Willis</strong> is critical. It is an arterial ring at the base of the brain where the anterior circulation (from the <strong>internal carotid arteries</strong>) meets the posterior circulation (from the <strong>vertebrobasilar system</strong>). This anastomosis provides collateral blood flow — but it’s not always enough. The <strong>Middle Cerebral Artery (MCA)</strong> is the artery most commonly affected in stroke, and its small lenticulostriate branches supply the internal capsule — making it the most common site of haemorrhagic stroke in hypertensive patients.</p>
+
+  <div class="img-wrap">
+    <div class="img-title">Circle of Willis — Arterial Anastomosis</div>
+    <img src="img_circle_willis.png" alt="Circle of Willis showing anterior and posterior cerebral circulation">
+    <div class="img-caption">Figure 11.1 — The Circle of Willis at the base of the brain, formed by the internal carotid and vertebrobasilar systems, providing collateral blood supply.</div>
+  </div>
+
+  <div class="card-row">
+    <div class="card anatomy full">
+      <div class="card-label">Circle of Willis Components</div>
+      <p>The Circle of Willis is an arterial anastomosis at the base of the brain, formed by the junction of the anterior (carotid) and posterior (vertebrobasilar) circulations:</p>
+      <ul>
+        <li><strong>Anterior Cerebral Arteries (ACA × 2):</strong> Run in the longitudinal fissure. Supply medial surface of the cerebral hemisphere (leg area of motor/sensory cortex).</li>
+        <li><strong>Anterior Communicating Artery:</strong> <em>Joins the two ACAs.</em> Most common site of Circle of Willis aneurysm!</li>
+        <li><strong>Middle Cerebral Arteries (MCA × 2):</strong> <em>Run in the lateral sulcus (Sylvian fissure).</em> Supply the lateral surface (face & arm areas). <strong>Most commonly affected artery in stroke.</strong></li>
+        <li><strong>Posterior Cerebral Arteries (PCA × 2):</strong> Supply occipital lobe (visual cortex) and inferior temporal lobe.</li>
+        <li><strong>Posterior Communicating Arteries (× 2):</strong> Connect PCA to ICA system.</li>
+        <li><strong>Basilar Artery:</strong> Formed by union of two vertebral arteries → gives off pontine branches → splits into PCAs.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exam-box">
+    <div class="exam-label">🎯 The Most Common Stroke Artery</div>
+    <p><strong>The Middle Cerebral Artery (MCA)</strong> is the artery most commonly associated with stroke. It supplies the lateral surface of the brain including the motor and sensory cortex for the face and upper limb, Broca's area, and Wernicke's area.</p>
+    <ul>
+      <li>MCA stroke → contralateral face and arm weakness (leg relatively spared), aphasia if dominant hemisphere.</li>
+      <li>MCA gives off <strong>lenticulostriate arteries</strong> → supply internal capsule and basal ganglia → haemorrhagic stroke in hypertensives ("Charcot-Bouchard microaneurysms").</li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <div class="quiz-header"><h2>Section 11 Quiz</h2><button class="btn btn-gold" onclick="showAnswers(this)">Show All Answers</button></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q1</div><div class="mcq-question">Regarding the Circle of Willis, which statement is correct?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Formed by internal and external carotid</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Anterior cerebral artery runs in the lateral sulcus</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Middle cerebral artery runs in the longitudinal fissure</button><button class="mcq-option" data-correct="true"><span class="opt-letter">D</span> Anterior communicating artery joins left and right ACAs</button></div><div class="explanation"><strong>Answer: D.</strong> The anterior communicating artery joins the left and right anterior cerebral arteries. The MCA runs in the lateral sulcus, and the ACA runs in the longitudinal fissure.</div></div>
+    <div class="mcq-item"><div class="mcq-qnum">Q2</div><div class="mcq-question">The artery most commonly associated with stroke is:</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Anterior cerebral artery</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Middle cerebral artery</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Posterior cerebral artery</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Basilar artery</button></div><div class="explanation"><strong>Answer: B.</strong> The MCA is the most commonly affected artery in stroke, supplying the lateral surface of the brain.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     S12: CLINICAL SCENARIOS
+     ═══════════════════════════════════ -->
+<div class="section" id="s12">
+  <div class="section-badge">Module 12</div>
+  <div class="section-title">Clinical Scenarios</div>
+  <div class="section-subtitle">Practice reasoning through real exam-style scenarios</div>
+
+  <p style="font-size:15.5px;line-height:1.8;color:var(--text2);margin-bottom:28px">This is where everything comes together. In your anatomy exam, you’ll be given clinical scenarios and asked to work backwards from the symptoms to the anatomy. The three scenarios below are modelled directly on past exam questions. For each one, read the case presentation carefully, think about what structure is damaged and which vessel is involved, and then check your reasoning against the answers. This is the single most effective way to study for clinical anatomy — it forces you to <em>apply</em> what you’ve learned rather than just memorise it.</p>
+
+  <h2>Scenario 1: The CEO Collapse</h2>
+  <div class="card-row">
+    <div class="card clinical full">
+      <div class="card-label">Case Presentation</div>
+      <p>A <strong>52-year-old CEO</strong> is brought to hospital after collapsing at his office. He was found drooling from the left side of his mouth, unable to walk, and weak on his left side. He can talk but his nasolabial fold is flat on the left. He has <strong>grade 2/5 power</strong> on the left upper and lower limbs with hyper-reflexia. He is a known hypertensive.</p>
+    </div>
+  </div>
+  <div class="card-row">
+    <div class="card anatomy full" style="border-left:4px solid var(--coral)">
+      <div class="card-label" style="color:var(--coral)">Analysis (Click "Show All Answers" to Reveal)</div>
+      <div class="scenario-answers" style="display:none">
+      <ul>
+        <li><strong>Q1. Most likely diagnosis:</strong> <em>Cerebrovascular Accident (Stroke)</em> — most likely haemorrhagic given the hypertension history.</li>
+        <li><strong>Q2. Which part of the CNS is injured?</strong> <em>Right Internal Capsule.</em> The contralateral (left) weakness with upper motor neuron signs (hyper-reflexia) localises the lesion to the right internal capsule, through which the corticospinal tract passes. The tract decussates at the medullary pyramids → right brain = left body.</li>
+        <li><strong>Q3. Most likely cause:</strong> <em>Rupture of lenticulostriate arteries</em> (branches of the MCA) due to chronic hypertension → Charcot-Bouchard microaneurysms.</li>
+        <li><strong>Q4. Internal Capsule anatomy:</strong> V-shaped white matter bundle between caudate and lentiform nucleus. Has anterior limb, genu, and posterior limb. Posterior limb carries the corticospinal (motor) tracts.</li>
+        <li><strong>Q5. Blood supply & investigations:</strong> Brain blood supply = ICA → MCA → lenticulostriate arteries. Investigations: Non-contrast CT head (urgent, to distinguish haemorrhagic vs ischaemic), FBC, clotting screen, blood glucose, renal function.</li>
+      </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2>Scenario 2: The Child with a Growing Head</h2>
+  <div class="card-row">
+    <div class="card clinical full">
+      <div class="card-label">Case Presentation</div>
+      <p>A <strong>2-year-old child</strong> is brought to hospital with a history of the head increasing in size. 6 weeks ago, he had fever and fits at a local hospital. Now he is sleeping a lot, losing balance, can only say a few words, and has been vomiting with headaches. Examination reveals an <strong>enlarged head</strong>, prominent frontal bossing, and a <strong>bulging anterior fontanelle</strong>.</p>
+    </div>
+  </div>
+  <div class="card-row">
+    <div class="card anatomy full" style="border-left:4px solid var(--coral)">
+      <div class="card-label" style="color:var(--coral)">Analysis (Click "Show All Answers" to Reveal)</div>
+      <div class="scenario-answers" style="display:none">
+      <ul>
+        <li><strong>Q1. Most likely diagnosis:</strong> <em>Hydrocephalus</em> — excessive CSF accumulation in the ventricular system.</li>
+        <li><strong>Q2. Most likely cause:</strong> <em>Post-meningitic obstruction</em> — the fever and fits 6 weeks ago suggest meningitis, which scarred the CSF pathways (arachnoid granulations or aqueduct of Sylvius).</li>
+        <li><strong>Q3. Anatomical area diseased:</strong> <em>Ventricular system</em> — dilated lateral ventricles and/or third ventricle. Obstruction likely at the aqueduct of Sylvius (narrowest point).</li>
+        <li><strong>Q4. Investigations:</strong> CT/MRI brain (shows dilated ventricles), cranial ultrasound (if fontanelle still open), blood tests (infection screen), CSF analysis if safe.</li>
+        <li><strong>Q5. Why the head is growing:</strong> In children under 2, the cranial sutures are <em>not yet fused</em>. As CSF builds up and intracranial pressure rises, the unfused sutures are pushed apart, causing the skull to expand. Treatment: <em>Ventriculoperitoneal (VP) shunt</em> or endoscopic third ventriculostomy.</li>
+      </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2>Scenario 3: Road Traffic Accident (Lucid Interval)</h2>
+  <div class="card-row">
+    <div class="card clinical full">
+      <div class="card-label">Case Presentation</div>
+      <p>A <strong>28-year-old male</strong> is brought to the ED following an RTA. He was initially conscious and talking at the scene, but lost consciousness en route. Examination: bruise over the right temporal region, left pupil dilated and non-reactive, GCS fallen from 15 to 9. CT shows a <strong>biconvex hyperdense lesion</strong> between the skull and brain on the right side.</p>
+    </div>
+  </div>
+  <div class="card-row">
+    <div class="card anatomy full" style="border-left:4px solid var(--coral)">
+      <div class="card-label" style="color:var(--coral)">Analysis (Click "Show All Answers" to Reveal)</div>
+      <div class="scenario-answers" style="display:none">
+      <ul>
+        <li><strong>Q1. Diagnosis:</strong> <em>Extradural (Epidural) Haematoma.</em></li>
+        <li><strong>Q2. Responsible vessel:</strong> <em>Middle Meningeal Artery</em> — a branch of the maxillary artery (from the ECA). It enters the skull through the foramen spinosum and runs beneath the pterion (thinnest part of the skull).</li>
+        <li><strong>Q3. "Lucid interval":</strong> Patient initially appears well after the injury (arterial bleeding is contained briefly by the dura), then rapidly deteriorates as the hematoma expands and compresses the brain → tentorial herniation.</li>
+        <li><strong>Q4. Dilated left pupil:</strong> As the expanding right-sided hematoma pushes the temporal lobe medially (transtentorial/uncal herniation), it compresses CN III (oculomotor nerve) on the <em>ipsilateral</em> side first → the left dilated pupil in this scenario indicates the lesion has caused contralateral CN III compression or a "false localizing sign."</li>
+        <li><strong>Q5. Surgical management:</strong> Emergency craniotomy/burr holes at the pterion to evacuate the hematoma. The surgical landmark is the pterion — junction of frontal, parietal, temporal, and greater wing of the sphenoid.</li>
+      </ul>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-gold show-answers-btn" onclick="document.querySelectorAll('.scenario-answers').forEach(e=>e.style.display=e.style.display==='none'?'block':'none')">Toggle All Scenario Answers</button>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     MASTER MCQ BANK
+     ═══════════════════════════════════ -->
+<div class="section" id="smcq">
+  <div class="section-badge">Practice Mode</div>
+  <div class="section-title">Master MCQ Bank</div>
+  <div class="section-subtitle">Comprehensive exam-style questions from all modules. Click an option to answer, then see the explanation.</div>
+  <button class="btn btn-gold" onclick="showAllMCQ()" style="margin-bottom:24px">Reveal All Answers</button>
+  <button class="btn btn-navy" onclick="resetAllMCQ()" style="margin-bottom:24px;margin-left:8px">Reset All</button>
+
+  <div class="mcq-item"><div class="mcq-qnum">Q1</div><div class="mcq-question">Which of the following correctly represents the SCALP layers (superficial to deep)?</div><div class="mcq-options"><button class="mcq-option" data-correct="true"><span class="opt-letter">A</span> Skin, Connective tissue, Aponeurosis, Loose areolar, Pericranium</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Skin, Aponeurosis, Connective tissue, Loose areolar, Pericranium</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Skin, Loose areolar, Connective tissue, Aponeurosis, Pericranium</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Skin, Connective tissue, Loose areolar, Aponeurosis, Pericranium</button></div><div class="explanation"><strong>Answer: A.</strong> The correct mnemonic is S-C-A-L-P: Skin, (Sub)Cutaneous connective tissue, Aponeurosis (Galea), Loose areolar tissue, Pericranium.</div></div>
+
+  <div class="mcq-item"><div class="mcq-qnum">Q2</div><div class="mcq-question">Which nerve provides motor supply to ALL muscles of facial expression?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Trigeminal (CN V)</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Glossopharyngeal (CN IX)</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> Facial nerve (CN VII)</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Hypoglossal (CN XII)</button></div><div class="explanation"><strong>Answer: C.</strong> All muscles of facial expression are innervated by the facial nerve (CN VII), which originates from the 2nd pharyngeal arch.</div></div>
+
+  <div class="mcq-item"><div class="mcq-qnum">Q3</div><div class="mcq-question">Regarding the Cranial Nerves, which statement is correct?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> The Vagus is the 11th Cranial Nerve</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> The Accessory Nerve supplies some muscles in the neck</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> The Hypoglossal Nerve is the 10th Cranial Nerve</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> The Facial Nerve supplies sensory innervation to the face</button></div><div class="explanation"><strong>Answer: B.</strong> The Accessory nerve (CN XI) supplies SCM and trapezius. Vagus = CN X, Hypoglossal = CN XII, and it's the Trigeminal nerve that provides sensory to the face.</div></div>
+
+  <div class="mcq-item"><div class="mcq-qnum">Q4</div><div class="mcq-question">The mnemonic 'Zambia Boys Make Toy Cars' is used to remember the branches of which nerve?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Trigeminal</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Vagus</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> Facial nerve (CN VII)</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Glossopharyngeal</button></div><div class="explanation"><strong>Answer: C.</strong> ZBMTC = Zygomatic, Buccal, Marginal mandibular, Temporal, Cervical — the 5 terminal branches of CN VII.</div></div>
+
+  <div class="mcq-item"><div class="mcq-qnum">Q5</div><div class="mcq-question">Le Fort fractures are a classification system for fractures of which anatomical region?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Base of skull</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Mid-face (facial skeleton)</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Mandible</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Cranial vault</button></div><div class="explanation"><strong>Answer: B.</strong> Le Fort fractures (I, II, III) classify mid-face fractures from high-impact trauma.</div></div>
+
+  <div class="mcq-item"><div class="mcq-qnum">Q6</div><div class="mcq-question">The area of the brain which controls consciousness is called:</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Broca's area</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Prefrontal cortex</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> Reticular formation</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Hippocampus</button></div><div class="explanation"><strong>Answer: C.</strong> The reticular formation (reticular activating system) in the brainstem controls consciousness and arousal. Damage → coma.</div></div>
+
+  <div class="mcq-item"><div class="mcq-qnum">Q7</div><div class="mcq-question">The spider-like membrane covering the Brain is called:</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Dura mater</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Arachnoid mater</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Pia mater</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Periosteum</button></div><div class="explanation"><strong>Answer: B.</strong> "Arachnoid" comes from the Greek word for spider. It is the middle meningeal layer with a web-like structure.</div></div>
+
+  <div class="mcq-item"><div class="mcq-qnum">Q8</div><div class="mcq-question">The motor cells in the cerebral cortex are called:</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Purkinje cells</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> Pyramidal cells (Betz cells)</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> Stellate cells</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Granule cells</button></div><div class="explanation"><strong>Answer: B.</strong> Pyramidal cells are the motor output neurons of the cerebral cortex. The largest pyramidal cells in the motor cortex are called Betz cells.</div></div>
+
+  <div class="mcq-item"><div class="mcq-qnum">Q9</div><div class="mcq-question">The cells in the Brain which produce the myelin sheath are called:</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Astrocytes</button><button class="mcq-option" data-correct="false"><span class="opt-letter">B</span> Ependymal cells</button><button class="mcq-option" data-correct="true"><span class="opt-letter">C</span> Oligodendrocytes</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Microglia</button></div><div class="explanation"><strong>Answer: C.</strong> Oligodendrocytes myelinate the CNS. Schwann cells myelinate the PNS.</div></div>
+
+  <div class="mcq-item"><div class="mcq-qnum">Q10</div><div class="mcq-question">The Aqueduct of Sylvius links which structures?</div><div class="mcq-options"><button class="mcq-option" data-correct="false"><span class="opt-letter">A</span> Lateral ventricles to 3rd ventricle</button><button class="mcq-option" data-correct="true"><span class="opt-letter">B</span> 3rd ventricle to 4th ventricle</button><button class="mcq-option" data-correct="false"><span class="opt-letter">C</span> 4th ventricle to subarachnoid space</button><button class="mcq-option" data-correct="false"><span class="opt-letter">D</span> Lateral ventricles to 4th ventricle</button></div><div class="explanation"><strong>Answer: B.</strong> The Aqueduct of Sylvius (cerebral aqueduct) connects the 3rd and 4th ventricles through the midbrain. Foramen of Monro connects lateral to 3rd ventricle.</div></div>
+</div>
+
+
+</main>
+
+<!-- ═══════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════ -->
+<script>
+// Navigation
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if(event && event.currentTarget) event.currentTarget.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// MCQ click handler
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.mcq-option').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const item = this.closest('.mcq-item');
+      if(item.classList.contains('answered')) return;
+      this.classList.add('selected');
+      item.classList.add('answered');
+    });
+  });
+});
+
+// Show all answers for a section quiz
+function showAnswers(btn) {
+  const section = btn.closest('.quiz-section');
+  section.querySelectorAll('.mcq-item').forEach(item => {
+    if(!item.classList.contains('answered')) {
+      item.classList.add('answered');
+    }
+  });
+}
+
+// Master MCQ: Reveal all
+function showAllMCQ() {
+  document.getElementById('smcq').querySelectorAll('.mcq-item').forEach(item => {
+    item.classList.add('answered');
+  });
+}
+
+// Master MCQ: Reset all
+function resetAllMCQ() {
+  document.getElementById('smcq').querySelectorAll('.mcq-item').forEach(item => {
+    item.classList.remove('answered');
+    item.querySelectorAll('.mcq-option').forEach(o => o.classList.remove('selected'));
+  });
+}
+</script>
+
+</body>
+</html>
