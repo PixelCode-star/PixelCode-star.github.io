@@ -56,9 +56,14 @@ body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:va
 /* ══════════════════════════════════════
    SIDEBAR
    ══════════════════════════════════════ */
-#sidebar{width:272px;min-height:100vh;background:linear-gradient(180deg,var(--navy) 0%,#0d1e35 100%);color:var(--cream);flex-shrink:0;overflow-y:auto;position:sticky;top:0;height:100vh;z-index:100;border-right:1px solid rgba(200,151,58,0.15)}
+#sidebar{width:272px;min-height:100vh;background:linear-gradient(180deg,var(--navy) 0%,#0d1e35 100%);color:var(--cream);flex-shrink:0;overflow-y:auto;position:sticky;top:0;height:100vh;z-index:100;border-right:1px solid rgba(200,151,58,0.15);scroll-behavior:smooth}
 #sidebar::-webkit-scrollbar{width:4px}
 #sidebar::-webkit-scrollbar-thumb{background:var(--navy3);border-radius:4px}
+/* Sidebar scroll buttons */
+.sidebar-scroll-btn{position:sticky;display:flex;align-items:center;justify-content:center;width:100%;height:36px;background:linear-gradient(135deg,rgba(200,151,58,0.18),rgba(200,151,58,0.08));border:none;cursor:pointer;color:var(--gold2);font-size:16px;transition:var(--transition);z-index:10;letter-spacing:1px;font-family:'JetBrains Mono',monospace;font-size:13px;gap:6px}
+.sidebar-scroll-btn:hover{background:rgba(200,151,58,0.25);color:var(--gold3)}
+.sidebar-scroll-btn.top{top:0;border-bottom:1px solid rgba(200,151,58,0.15)}
+.sidebar-scroll-btn.bottom{bottom:0;border-top:1px solid rgba(200,151,58,0.15)}
 #sidebar-header{padding:28px 22px 20px;border-bottom:1px solid rgba(255,255,255,0.06);background:linear-gradient(135deg,rgba(200,151,58,0.08),transparent)}
 #sidebar-header h1{font-family:'Playfair Display',serif;font-size:19px;color:var(--gold2);line-height:1.3;margin-bottom:6px}
 #sidebar-header p{font-size:11px;color:#6a8aaa;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px}
@@ -279,6 +284,7 @@ tr:nth-child(even) td{background:var(--cream)}
 <canvas id="particles-canvas"></canvas>
 
 <nav id="sidebar">
+  <button class="sidebar-scroll-btn top" id="sidebar-scroll-up" onclick="document.getElementById('sidebar').scrollBy({top:-200,behavior:'smooth'})" title="Scroll up">▲ scroll up</button>
   <div id="sidebar-header">
     <h1>BMHA 220/221<br>Study Guide</h1>
     <p>Head · Neck · CNS</p>
@@ -321,6 +327,7 @@ tr:nth-child(even) td{background:var(--cream)}
     <a class="nav-item mcq-link" onclick="show('smcq')">📝 Master MCQ Bank</a>
     <a class="nav-item" onclick="show('spapers')" style="background:rgba(212,160,23,0.12);border-left:3px solid var(--gold)">📄 Past Exam Papers</a>
   </div>
+  <button class="sidebar-scroll-btn bottom" id="sidebar-scroll-down" onclick="document.getElementById('sidebar').scrollBy({top:200,behavior:'smooth'})" title="Scroll down">▼ scroll down</button>
 </nav>
 
 <main id="main">
@@ -342,6 +349,15 @@ tr:nth-child(even) td{background:var(--cream)}
     
     <div style="margin-top: 40px; display: inline-flex; align-items: center; gap: 12px; background: rgba(200,151,58,0.15); border: 2px solid var(--gold); padding: 12px 28px; border-radius: 50px; font-family: 'JetBrains Mono', monospace; font-size: 18px; color: var(--gold2); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; box-shadow: 0 0 24px rgba(200,151,58,0.4); text-shadow: 0 2px 4px rgba(0,0,0,0.5); position: relative; z-index: 10;">
       <span style="font-size: 24px">👑</span> MADE BY ZAIGE
+    </div>
+
+    <div style="margin-top:28px;display:flex;gap:16px;flex-wrap:wrap;position:relative;z-index:10">
+      <button onclick="show('smcq')" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:linear-gradient(135deg,var(--sage),var(--emerald2));border:none;border-radius:50px;cursor:pointer;font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:white;box-shadow:0 4px 24px rgba(26,107,84,0.5);transition:all 0.25s ease;letter-spacing:0.5px" onmouseover="this.style.transform='translateY(-3px) scale(1.03)';this.style.boxShadow='0 8px 32px rgba(26,107,84,0.6)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 24px rgba(26,107,84,0.5)'">
+        <span style="font-size:20px">🧠</span> I'm Ready — Quiz Me!
+      </button>
+      <button onclick="show('spapers')" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.25);border-radius:50px;cursor:pointer;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;color:var(--cream);backdrop-filter:blur(8px);transition:all 0.25s ease" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+        <span style="font-size:18px">📄</span> View Past Papers
+      </button>
     </div>
 
     <img src="img_brain_lateral.png" alt="Brain Lateral View" class="hero-brain"/>
