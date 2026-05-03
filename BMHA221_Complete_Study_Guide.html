@@ -287,6 +287,8 @@ tr:nth-child(even) td{background:var(--cream)}
 .fab-quiz:hover{box-shadow:0 10px 36px rgba(26,107,84,0.7)}
 .fab-draw{background:linear-gradient(135deg,#5a2d80,#7a4daa);color:white;box-shadow:0 6px 24px rgba(90,45,128,0.55)}
 .fab-draw:hover{box-shadow:0 10px 36px rgba(90,45,128,0.7)}
+.fab-prep{background:linear-gradient(135deg,#c0392b,#e74c3c);color:white;box-shadow:0 6px 24px rgba(192,57,43,0.55)}
+.fab-prep:hover{box-shadow:0 10px 36px rgba(192,57,43,0.7)}
 .fab-btn .fab-icon{font-size:18px}
 @keyframes fabPop{0%{transform:scale(0.7) translateY(20px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
 @media print{#fab-cluster{display:none}}
@@ -316,6 +318,9 @@ tr:nth-child(even) td{background:var(--cream)}
      FLOATING ACTION BUTTONS
      ═══════════════════════════════════ -->
 <div id="fab-cluster">
+  <a href="practical_prep.pdf" target="_blank" class="fab-btn fab-prep" title="Open Practical Prep PDF" style="text-decoration:none;">
+    <span class="fab-icon">🔬</span> Practical Prep
+  </a>
   <button class="fab-btn fab-draw" onclick="toggleDraw()" id="fab-draw-btn" title="Open drawing canvas">
     <span class="fab-icon">✏️</span> Draw
   </button>
