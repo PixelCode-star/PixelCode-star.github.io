@@ -277,11 +277,73 @@ tr:nth-child(even) td{background:var(--cream)}
   .hero{background:#f0f0f0!important;color:#222!important}
   .hero *{color:#222!important}
 }
+/* ══════════════════════════════════════
+   FLOATING ACTION BUTTONS
+   ══════════════════════════════════════ */
+#fab-cluster{position:fixed;bottom:28px;right:28px;z-index:8000;display:flex;flex-direction:column;align-items:flex-end;gap:12px;animation:fabPop 0.5s 0.8s both}
+.fab-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:none;border-radius:50px;cursor:pointer;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.3px;box-shadow:0 6px 28px rgba(0,0,0,0.3);transition:all 0.25s cubic-bezier(0.4,0,0.2,1);white-space:nowrap}
+.fab-btn:hover{transform:translateY(-3px) scale(1.04)}
+.fab-quiz{background:linear-gradient(135deg,#2d8659,#1a6b54);color:white;box-shadow:0 6px 24px rgba(26,107,84,0.55)}
+.fab-quiz:hover{box-shadow:0 10px 36px rgba(26,107,84,0.7)}
+.fab-draw{background:linear-gradient(135deg,#5a2d80,#7a4daa);color:white;box-shadow:0 6px 24px rgba(90,45,128,0.55)}
+.fab-draw:hover{box-shadow:0 10px 36px rgba(90,45,128,0.7)}
+.fab-btn .fab-icon{font-size:18px}
+@keyframes fabPop{0%{transform:scale(0.7) translateY(20px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
+@media print{#fab-cluster{display:none}}
+
+/* ══════════════════════════════════════
+   DRAW OVERLAY
+   ══════════════════════════════════════ */
+#draw-overlay{position:fixed;inset:0;z-index:9000;display:none;flex-direction:column;pointer-events:none}
+#draw-overlay.active{display:flex;pointer-events:all}
+#draw-canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair;touch-action:none}
+#draw-toolbar{position:relative;z-index:9001;display:flex;align-items:center;gap:10px;padding:10px 20px;background:rgba(15,43,30,0.92);backdrop-filter:blur(12px);border-bottom:2px solid rgba(200,151,58,0.3);flex-wrap:wrap}
+#draw-toolbar label{font-family:'JetBrains Mono',monospace;font-size:11px;color:#8abba8;text-transform:uppercase;letter-spacing:1px}
+.draw-tool-btn{padding:7px 16px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:#f5f2eb;cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;transition:all 0.2s}
+.draw-tool-btn:hover,.draw-tool-btn.active-tool{background:rgba(200,151,58,0.25);border-color:#d4a017;color:#d4a017}
+#draw-color{width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,0.3);cursor:pointer;padding:2px;background:none}
+#draw-size{width:90px;accent-color:#d4a017;cursor:pointer}
+.draw-close-btn{margin-left:auto;padding:7px 18px;border-radius:8px;border:none;background:rgba(192,57,43,0.75);color:white;cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;transition:all 0.2s}
+.draw-close-btn:hover{background:rgba(231,76,60,0.95)}
+#draw-hint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(200,151,58,0.5);pointer-events:none;z-index:9001;letter-spacing:1px;background:rgba(0,0,0,0.3);padding:4px 12px;border-radius:20px}
 </style>
 </head>
 <body>
 <div id="progress-bar"></div>
 <canvas id="particles-canvas"></canvas>
+
+<!-- ═══════════════════════════════════
+     FLOATING ACTION BUTTONS
+     ═══════════════════════════════════ -->
+<div id="fab-cluster">
+  <button class="fab-btn fab-draw" onclick="toggleDraw()" id="fab-draw-btn" title="Open drawing canvas">
+    <span class="fab-icon">✏️</span> Draw
+  </button>
+  <button class="fab-btn fab-quiz" onclick="show('smcq')" title="Go to MCQ bank">
+    <span class="fab-icon">🧠</span> Quiz Me!
+  </button>
+</div>
+
+<!-- ═══════════════════════════════════
+     DRAW OVERLAY
+     ═══════════════════════════════════ -->
+<div id="draw-overlay">
+  <div id="draw-toolbar">
+    <label>Tool:</label>
+    <button class="draw-tool-btn active-tool" id="btn-pen" onclick="setTool('pen')">🖊 Pen</button>
+    <button class="draw-tool-btn" id="btn-highlight" onclick="setTool('highlight')">🖌 Highlight</button>
+    <button class="draw-tool-btn" id="btn-eraser" onclick="setTool('eraser')">⬜ Eraser</button>
+    <label style="margin-left:8px">Color:</label>
+    <input type="color" id="draw-color" value="#e8c547" title="Pen colour">
+    <label>Size:</label>
+    <input type="range" id="draw-size" min="1" max="40" value="4" title="Brush size">
+    <button class="draw-tool-btn" onclick="clearCanvas()" style="margin-left:8px">🗑 Clear</button>
+    <button class="draw-tool-btn" onclick="undoDraw()">↩ Undo</button>
+    <button class="draw-close-btn" onclick="toggleDraw()">✕ Close</button>
+  </div>
+  <canvas id="draw-canvas"></canvas>
+  <div id="draw-hint">Draw freely on top of the page — Close when done</div>
+</div>
 
 <nav id="sidebar">
   <button class="sidebar-scroll-btn top" id="sidebar-scroll-up" onclick="document.getElementById('sidebar').scrollBy({top:-200,behavior:'smooth'})" title="Scroll up">▲ scroll up</button>
@@ -2511,6 +2573,162 @@ function initParticles() {
     requestAnimationFrame(draw);
   }
   draw();
+}
+// ═══════════════════════════════════
+// DRAW OVERLAY ENGINE
+// ═══════════════════════════════════
+const drawOverlay = document.getElementById('draw-overlay');
+const drawCanvas = document.getElementById('draw-canvas');
+let drawCtx = null;
+let isDrawing = false;
+let currentTool = 'pen'; // pen, highlight, eraser
+let currentPath = [];
+let drawPaths = [];
+
+function toggleDraw() {
+  const isActive = drawOverlay.classList.toggle('active');
+  if (isActive) {
+    if (!drawCtx) initDraw();
+    resizeDrawCanvas();
+    document.body.style.overflow = 'hidden'; // prevent scrolling behind canvas
+  } else {
+    document.body.style.overflow = '';
+  }
+}
+
+function initDraw() {
+  drawCtx = drawCanvas.getContext('2d');
+  window.addEventListener('resize', resizeDrawCanvas);
+  
+  // Pointer events for mouse/touch
+  drawCanvas.addEventListener('pointerdown', startDrawing);
+  drawCanvas.addEventListener('pointermove', draw);
+  drawCanvas.addEventListener('pointerup', stopDrawing);
+  drawCanvas.addEventListener('pointerout', stopDrawing);
+}
+
+function resizeDrawCanvas() {
+  if (!drawCtx) return;
+  // Save current drawing
+  const tempCanvas = document.createElement('canvas');
+  tempCanvas.width = drawCanvas.width;
+  tempCanvas.height = drawCanvas.height;
+  tempCanvas.getContext('2d').drawImage(drawCanvas, 0, 0);
+  
+  drawCanvas.width = window.innerWidth;
+  drawCanvas.height = window.innerHeight;
+  
+  // Restore drawing
+  drawCtx.drawImage(tempCanvas, 0, 0);
+  applyToolSettings();
+}
+
+function setTool(tool) {
+  currentTool = tool;
+  document.querySelectorAll('.draw-tool-btn').forEach(btn => btn.classList.remove('active-tool'));
+  document.getElementById('btn-' + tool).classList.add('active-tool');
+  applyToolSettings();
+}
+
+function applyToolSettings() {
+  if (!drawCtx) return;
+  const color = document.getElementById('draw-color').value;
+  const size = document.getElementById('draw-size').value;
+  
+  drawCtx.lineCap = 'round';
+  drawCtx.lineJoin = 'round';
+  
+  if (currentTool === 'pen') {
+    drawCtx.globalCompositeOperation = 'source-over';
+    drawCtx.strokeStyle = color;
+    drawCtx.lineWidth = size;
+  } else if (currentTool === 'highlight') {
+    drawCtx.globalCompositeOperation = 'multiply'; // nice highlighter effect
+    // Convert hex to rgba for highlighter
+    let r = parseInt(color.substr(1,2), 16);
+    let g = parseInt(color.substr(3,2), 16);
+    let b = parseInt(color.substr(5,2), 16);
+    drawCtx.strokeStyle = `rgba(${r},${g},${b},0.4)`;
+    drawCtx.lineWidth = size * 3; // thicker for highlighter
+  } else if (currentTool === 'eraser') {
+    drawCtx.globalCompositeOperation = 'destination-out'; // erases content
+    drawCtx.strokeStyle = 'rgba(0,0,0,1)';
+    drawCtx.lineWidth = size * 4;
+  }
+}
+
+// Update tool settings when inputs change
+document.getElementById('draw-color').addEventListener('input', applyToolSettings);
+document.getElementById('draw-size').addEventListener('input', applyToolSettings);
+
+function startDrawing(e) {
+  isDrawing = true;
+  applyToolSettings();
+  drawCtx.beginPath();
+  drawCtx.moveTo(e.clientX, e.clientY);
+  currentPath = [{x: e.clientX, y: e.clientY}];
+  
+  // Hide hint on first draw
+  const hint = document.getElementById('draw-hint');
+  if (hint) hint.style.display = 'none';
+}
+
+function draw(e) {
+  if (!isDrawing) return;
+  drawCtx.lineTo(e.clientX, e.clientY);
+  drawCtx.stroke();
+  currentPath.push({x: e.clientX, y: e.clientY});
+}
+
+function stopDrawing() {
+  if (!isDrawing) return;
+  isDrawing = false;
+  drawCtx.closePath();
+  if (currentPath.length > 1) {
+    // Save path for undo
+    drawPaths.push({
+      tool: currentTool,
+      color: document.getElementById('draw-color').value,
+      size: document.getElementById('draw-size').value,
+      points: [...currentPath]
+    });
+  }
+}
+
+function clearCanvas() {
+  if (!drawCtx) return;
+  drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+  drawPaths = [];
+}
+
+function undoDraw() {
+  if (!drawCtx || drawPaths.length === 0) return;
+  drawPaths.pop(); // remove last path
+  
+  // Clear and redraw everything
+  drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+  
+  const savedTool = currentTool;
+  
+  drawPaths.forEach(path => {
+    // Temporarily set tool to path's tool
+    currentTool = path.tool;
+    document.getElementById('draw-color').value = path.color;
+    document.getElementById('draw-size').value = path.size;
+    applyToolSettings();
+    
+    drawCtx.beginPath();
+    drawCtx.moveTo(path.points[0].x, path.points[0].y);
+    for (let i = 1; i < path.points.length; i++) {
+      drawCtx.lineTo(path.points[i].x, path.points[i].y);
+    }
+    drawCtx.stroke();
+    drawCtx.closePath();
+  });
+  
+  // Restore current tool
+  currentTool = savedTool;
+  setTool(savedTool);
 }
 </script>
 
